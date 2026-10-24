@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://crj6alswrbubf"]
+
+[ext_resource type="Script" uid="uid://s2eh5k77nde4" path="res://test_object_3d.gd" id="1_ltkrc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jp0yl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jp0yl"]
+
+[node name="StaticBody3D" type="StaticBody3D" unique_id=1148571399]
+script = ExtResource("1_ltkrc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1673279763]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("BoxMesh_jp0yl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=800472014]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_jp0yl")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1807302832]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6317961, 0)
+visible = false
+billboard = 1
+text = "PRESS \"F\" TO INTERACT"

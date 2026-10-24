@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://hsqivn0j0hvp"]
 
 [ext_resource type="Script" uid="uid://c35k1t2d375ug" path="res://Player/player.gd" id="1_l8h54"]
+[ext_resource type="PackedScene" uid="uid://dma150kagnbs0" path="res://Player/gun.tscn" id="3_btcbx"]
+[ext_resource type="PackedScene" uid="uid://c1osquwcjoq2s" path="res://Player/inventory_contoller.tscn" id="3_gwnis"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5a1so"]
 
@@ -30,5 +32,18 @@ transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 1
 mesh = SubResource("CapsuleMesh_jp0yl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body" unique_id=1342483984]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.033645272, 0.32094455, -0.5211432)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0055369157, 0.32094455, -0.5211432)
 mesh = SubResource("BoxMesh_jp0yl")
+
+[node name="interaction_ray" type="RayCast3D" parent="Body/MeshInstance3D" unique_id=1151935958]
+unique_name_in_owner = true
+transform = Transform3D(25.318943, 4.225574e-07, -1.7484504e-07, -4.4269045e-06, -1.05639344e-07, -0.9999971, -4.4269045e-06, 2.4167466, -4.371123e-08, -0.028024329, 0, 0.096598625)
+
+[node name="Node3D" parent="Body" unique_id=829829562 instance=ExtResource("3_btcbx")]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0.61158484, 0.028898954, -0.030927943)
+
+[node name="Marker3D2" type="Marker3D" parent="Body/Node3D" unique_id=2145971219]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008175731, 0.15044177, -0.7235056)
+
+[node name="inventory_contoller" parent="." unique_id=1885779031 instance=ExtResource("3_gwnis")]

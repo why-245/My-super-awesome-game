@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://hsqivn0j0hvp"]
 
-[ext_resource type="Script" uid="uid://c35k1t2d375ug" path="res://Player/player.gd" id="1_l8h54"]
-[ext_resource type="PackedScene" uid="uid://dma150kagnbs0" path="res://Player/gun.tscn" id="3_btcbx"]
-[ext_resource type="PackedScene" uid="uid://c1osquwcjoq2s" path="res://Player/inventory_contoller.tscn" id="3_gwnis"]
+[ext_resource type="Script" uid="uid://c35k1t2d375ug" path="res://Entities/Player/player.gd" id="1_l8h54"]
+[ext_resource type="PackedScene" uid="uid://dma150kagnbs0" path="res://Entities/Objects/gun.tscn" id="3_btcbx"]
+[ext_resource type="PackedScene" uid="uid://c1osquwcjoq2s" path="res://Systems/Inventory/inventory_contoller.tscn" id="3_gwnis"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5a1so"]
 

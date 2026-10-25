@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://2emj7unrrp3k"]
+
+[ext_resource type="Script" uid="uid://bq5oou3a1atok" path="res://Systems/Interaction/item_data.gd" id="1_crn23"]
+
+[node name="ItemData" type="Node" unique_id=1781012245]
+physics_interpolation_mode = 2
+script = ExtResource("1_crn23")

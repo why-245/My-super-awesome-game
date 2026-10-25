@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://diboloqkn23mb"]
 
-[ext_resource type="Script" uid="uid://coyyvuyqlx15q" path="res://Player/enemy_3d.gd" id="1_w7iex"]
+[ext_resource type="Script" uid="uid://coyyvuyqlx15q" path="res://Entities/Enemies/enemy_3d.gd" id="1_w7iex"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jp0yl"]
 

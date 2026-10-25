@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c1osquwcjoq2s"]
 
-[ext_resource type="Script" uid="uid://cxjrvtw4mq337" path="res://Player/inventory_contoller.gd" id="1_soxu5"]
+[ext_resource type="Script" uid="uid://cxjrvtw4mq337" path="res://Systems/Inventory/inventory_contoller.gd" id="1_soxu5"]
+[ext_resource type="Script" uid="uid://bftlg2rxiy7v7" path="res://Systems/Inventory/inventory_ui.gd" id="2_7mkj4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5we2l"]
 content_margin_left = 0.0
@@ -19,12 +20,12 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[node name="inventory_contoller" type="Node" unique_id=1885779031]
+[node name="InventoryController" type="Node" unique_id=1885779031]
 script = ExtResource("1_soxu5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=984138578]
 
-[node name="inventory_ui" type="Control" parent="CanvasLayer" unique_id=1674860327]
+[node name="InventoryUi" type="Control" parent="CanvasLayer" unique_id=1674860327]
 unique_name_in_owner = true
 visible = false
 layout_mode = 3
@@ -33,8 +34,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_7mkj4")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/inventory_ui" unique_id=300882406]
+[node name="Panel" type="Panel" parent="CanvasLayer/InventoryUi" unique_id=300882406]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -49,7 +51,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5we2l")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/inventory_ui/Panel" unique_id=465742866]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/InventoryUi/Panel" unique_id=465742866]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -57,6 +59,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/inventory_ui/Panel/MarginContainer" unique_id=796375079]
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/InventoryUi/Panel/MarginContainer" unique_id=796375079]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 4

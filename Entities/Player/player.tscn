@@ -1,15 +1,12 @@
 [gd_scene format=3 uid="uid://hsqivn0j0hvp"]
 
 [ext_resource type="Script" uid="uid://c35k1t2d375ug" path="res://Entities/Player/player.gd" id="1_l8h54"]
+[ext_resource type="Script" uid="uid://da81riu5yk6sb" path="res://Entities/Player/player_interaction_controller.gd" id="2_lu8i8"]
 [ext_resource type="PackedScene" uid="uid://dma150kagnbs0" path="res://Entities/Objects/gun.tscn" id="3_btcbx"]
-[ext_resource type="PackedScene" uid="uid://c1osquwcjoq2s" path="res://Systems/Inventory/inventory_contoller.tscn" id="3_gwnis"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5a1so"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jp0yl"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_jp0yl"]
-size = Vector3(0.47937012, 0.21459961, 0.47149658)
 
 [node name="Player" type="CharacterBody3D" unique_id=779760721]
 script = ExtResource("1_l8h54")
@@ -31,14 +28,6 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_jp0yl")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Body" unique_id=1342483984]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0055369157, 0.32094455, -0.5211432)
-mesh = SubResource("BoxMesh_jp0yl")
-
-[node name="interaction_ray" type="RayCast3D" parent="Body/MeshInstance3D" unique_id=1151935958]
-unique_name_in_owner = true
-transform = Transform3D(25.318943, 4.225574e-07, -1.7484504e-07, -4.4269045e-06, -1.05639344e-07, -0.9999971, -4.4269045e-06, 2.4167466, -4.371123e-08, -0.028024329, 0, 0.096598625)
-
 [node name="Node3D" parent="Body" unique_id=829829562 instance=ExtResource("3_btcbx")]
 transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0.61158484, 0.028898954, -0.030927943)
 
@@ -46,4 +35,8 @@ transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0.61
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008175731, 0.15044177, -0.7235056)
 
-[node name="inventory_contoller" parent="." unique_id=1885779031 instance=ExtResource("3_gwnis")]
+[node name="InteractionRay" type="RayCast3D" parent="Body" unique_id=1062597944]
+unique_name_in_owner = true
+transform = Transform3D(43.91247, 4.916091e-07, -7.642741e-15, 0, -1.2290228e-07, -0.9999999, -7.677901e-06, 2.8116763, -4.3711385e-08, -8.32647e-08, 0.17894185, -0.47621858)
+collision_mask = 3
+script = ExtResource("2_lu8i8")

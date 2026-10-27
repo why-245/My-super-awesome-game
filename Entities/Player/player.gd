@@ -1,24 +1,17 @@
 extends CharacterBody3D
 
-@onready var interaction_ray = %interaction_ray
-@onready var sprint_speed = 10.00
-@onready var inventory_controller: InventoryController = $inventory_contoller
-
 const SPEED = 5.0
 
-var current_interactable = null
+@onready var sprint_speed = 10.00
+
 var current_speed = SPEED
-var interaction_system = InteractionSystem.new()
+
 
 func _physics_process(delta: float) -> void:
-	
-	# Add the gravity.
+
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	
-	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -30,22 +23,15 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	look_at_mouse()
-	#check_hover_collision()
-	interaction_system.check_hover_collision(interaction_ray)
 	
 	if Input.is_action_just_pressed("shoot"):
 		shoot_bullet()
 	
 	if Input.is_action_just_pressed("interact"):
-		activate()
+		pass
 	
 	if Input.is_action_just_pressed("inventory"):
-		if inventory_controller.is_visible():
-			inventory_controller.make_invisble()
-
-		else:
-			inventory_controller.make_visible()
-
+		pass
 	
 	if Input.is_action_pressed("sprint"):
 		current_speed = sprint_speed
@@ -54,7 +40,6 @@ func _physics_process(delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	pass
-
 
 func shoot_bullet():
 	const bullet3D = preload("res://Entities/Objects/bullet_3d.tscn")
@@ -74,12 +59,3 @@ func look_at_mouse():
 	
 	%Body.look_at(mouse_position_on_screen, Vector3.UP, 0)
 	%Body.rotation.x = 0
-
-func activate():
-	var object = interaction_ray.get_collider()
-	if object and object.has_method("interact"):
-		object.interact()
-
-	if current_interactable:
-		current_interactable.hide_prompt()
-		current_interactable = null

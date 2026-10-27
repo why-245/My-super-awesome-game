@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bagi4twhdpqxb"]
+
+[ext_resource type="Script" uid="uid://bv208l8dhqknc" path="res://label_3d.gd" id="1_bjoq2"]
+
+[node name="Label3D" type="Label3D" unique_id=1975442167]
+visible = false
+text = "Press \"F\" to Interact"
+script = ExtResource("1_bjoq2")

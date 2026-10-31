@@ -1,15 +1,28 @@
 [gd_scene format=3 uid="uid://hsqivn0j0hvp"]
 
 [ext_resource type="Script" uid="uid://c35k1t2d375ug" path="res://Entities/Player/player.gd" id="1_l8h54"]
+[ext_resource type="PackedScene" uid="uid://cdp7k4278p7sa" path="res://Systems/Inventory/inventory_ui.tscn" id="2_01a4e"]
 [ext_resource type="Script" uid="uid://da81riu5yk6sb" path="res://Entities/Player/player_interaction_controller.gd" id="2_lu8i8"]
 [ext_resource type="PackedScene" uid="uid://dma150kagnbs0" path="res://Entities/Objects/gun.tscn" id="3_btcbx"]
+[ext_resource type="Script" uid="uid://bq5oou3a1atok" path="res://Systems/Inventory/item_data.gd" id="4_01a4e"]
+[ext_resource type="Texture2D" uid="uid://mrbl5v4nsw2g" path="res://icon.svg" id="5_7a1se"]
+[ext_resource type="PackedScene" uid="uid://b3uyeslqdc5pc" path="res://test_object3D.tscn" id="6_01a4e"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5a1so"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jp0yl"]
 
+[sub_resource type="Resource" id="Resource_qf1qr"]
+script = ExtResource("4_01a4e")
+item_name = "Test"
+item_model_prefab = ExtResource("6_01a4e")
+icon = ExtResource("5_7a1se")
+metadata/_custom_type_script = "uid://bq5oou3a1atok"
+
 [node name="Player" type="CharacterBody3D" unique_id=779760721]
 script = ExtResource("1_l8h54")
+
+[node name="InventoryUi" parent="." unique_id=1367136667 instance=ExtResource("2_01a4e")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=68562120]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -37,6 +50,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008175731, 0.15044177, -0.7
 
 [node name="InteractionRay" type="RayCast3D" parent="Body" unique_id=1062597944]
 unique_name_in_owner = true
-transform = Transform3D(43.91247, 4.916091e-07, -7.642741e-15, 0, -1.2290228e-07, -0.9999999, -7.677901e-06, 2.8116763, -4.3711385e-08, -8.32647e-08, 0.17894185, -0.47621858)
+transform = Transform3D(127.758835, 7.988308e-07, -7.642741e-15, 0, -1.997077e-07, -0.9999999, -2.2338065e-05, 4.5687795, -4.3711385e-08, 6.775822e-08, 0.17894185, 0.38753188)
 collision_mask = 3
+hit_back_faces = false
 script = ExtResource("2_lu8i8")
+item_types = Array[ExtResource("4_01a4e")]([SubResource("Resource_qf1qr")])
+
+[connection signal="OnItemPickUp" from="Body/InteractionRay" to="InventoryUi" method="pickup_item"]

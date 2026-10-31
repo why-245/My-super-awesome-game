@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
 [editor_plugins]
@@ -86,3 +86,16 @@ inventory={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+shading/overrides/force_vertex_shading=true
+anti_aliasing/screen_space_roughness_limiter/enabled=false
+
+[shader_globals]
+
+resolution={
+"type": "ivec2",
+"value": Vector2i(320, 240)
+}
+colour_depth={
+"type": "float",
+"value": 32.0
+}

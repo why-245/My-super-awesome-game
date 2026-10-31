@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://cdp7k4278p7sa"]
+
+[ext_resource type="PackedScene" uid="uid://ddt2jhoewcatg" path="res://Systems/Inventory/inventory_slot.tscn" id="1_3uh80"]
+[ext_resource type="Script" uid="uid://sf4g2ix21273" path="res://Systems/Inventory/inventory_ui.gd" id="1_gguo2"]
+
+[node name="InventoryUi" type="CanvasLayer" unique_id=1367136667 node_paths=PackedStringArray("inventory_grid")]
+visible = false
+script = ExtResource("1_gguo2")
+inventory_grid = NodePath("InventoryItems")
+
+[node name="InventoryItems" type="Control" parent="." unique_id=55805377]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -70.0
+offset_right = -70.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="InventorySlot" parent="InventoryItems" unique_id=788182152 instance=ExtResource("1_3uh80")]
+layout_mode = 0
+
+[node name="TopContainer" type="HBoxContainer" parent="." unique_id=1145584929]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 99.0
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="TopContainer" unique_id=259290381]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="TopContainer/Panel" unique_id=1194671860]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.5
+offset_top = -11.5
+offset_right = 82.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLACEHOLDER MENU"
+
+[node name="BottomContainer" type="HBoxContainer" parent="." unique_id=80201990]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -87.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="BottomContainer" unique_id=1568856470]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="BottomContainer/Panel" unique_id=2101458620]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLACEHOLDER MENU"

@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 const SPEED = 5.0
+@onready var inventory_ui: InventoryUi = $InventoryUi
 
 @onready var sprint_speed = 10.00
 
@@ -31,7 +32,11 @@ func _physics_process(delta: float) -> void:
 		pass
 	
 	if Input.is_action_just_pressed("inventory"):
-		pass
+		if inventory_ui.visible == true:
+			inventory_ui.close_inventory()
+		else:
+			inventory_ui.open_inventory()
+		
 	
 	if Input.is_action_pressed("sprint"):
 		current_speed = sprint_speed

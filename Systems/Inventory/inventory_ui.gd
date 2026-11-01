@@ -25,6 +25,8 @@ func _ready() -> void:
 		var slot = inventory_slot_prefab.instantiate() as InventorySlot
 		inventory_grid.add_child(slot)
 		slot.inventory_slot_id = i
+		slot.position_id = i - 7
+		slot.set_id(0)
 		inventory_slots.append(slot)
 
 func _update_inventory_position(value: int) -> void:
@@ -33,10 +35,12 @@ func _update_inventory_position(value: int) -> void:
 		inv_slot.set_id(value)
 
 func pickup_item(item : ItemData):
+	inventory_slots.reverse()
 	for slot in inventory_slots:
 		if (!slot.slot_filled):
 			slot.fill_slot(item)
 			break
+	inventory_slots.reverse()
 
 func open_inventory():
 	visible = true

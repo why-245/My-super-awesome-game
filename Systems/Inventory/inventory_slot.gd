@@ -9,9 +9,9 @@ var slot_filled: bool = false
 
 var slot_data : ItemData
 
+
 func set_id(pos: int) -> void:
 	position_id += pos
-	
 	match position_id:
 		0: _configure(Vector2.ZERO, Vector2.ONE * 1.5, true)
 		1: _configure(Vector2(-200, -20), Vector2.ONE * 1.2, true)

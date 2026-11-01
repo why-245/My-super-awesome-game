@@ -1,14 +1,17 @@
 extends Button
 class_name InventorySlot
 
+signal OnItemEquiped(SlotID)
+
+@onready var equipped_item: Panel = $EquippedItem
+
 @export var icon_slot : TextureRect
- 
+
 var position_id : int = 0
 var inventory_slot_id = -1
 var slot_filled: bool = false
 
 var slot_data : ItemData
-
 
 func set_id(pos: int) -> void:
 	position_id += pos
@@ -32,7 +35,13 @@ func _configure(new_position: Vector2, new_scale: Vector2, value : bool) -> void
 	
 	visible = value
 
-func fill_slot(data : ItemData):
+func fill_slot(data : ItemData, equipped : bool):
+	equipped_item.visible = equipped
 	slot_data = data
 	slot_filled = true
 	icon_slot.texture = data.icon
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if (event.button_index == MOUSE_BUTTON_LEFT and event.double_click):
+			OnItemEquiped.emit(inventory_slot_id)

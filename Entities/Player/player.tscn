@@ -23,6 +23,7 @@ metadata/_custom_type_script = "uid://bq5oou3a1atok"
 script = ExtResource("1_l8h54")
 
 [node name="InventoryUi" parent="." unique_id=1367136667 instance=ExtResource("2_01a4e")]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=68562120]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

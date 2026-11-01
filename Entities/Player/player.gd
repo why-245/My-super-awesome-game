@@ -1,10 +1,8 @@
 extends CharacterBody3D
 
-const SPEED = 5.0
-@onready var inventory_ui: InventoryUi = $InventoryUi
-
 @onready var sprint_speed = 10.00
 
+const SPEED = 5.0
 var current_speed = SPEED
 
 
@@ -31,13 +29,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
 		pass
 	
-	if Input.is_action_just_pressed("inventory"):
-		if inventory_ui.visible == true:
-			inventory_ui.close_inventory()
-		else:
-			inventory_ui.open_inventory()
-		
-	
 	if Input.is_action_pressed("sprint"):
 		current_speed = sprint_speed
 	else:
@@ -53,8 +44,6 @@ func shoot_bullet():
 	new_bullet.transform = %Marker3D2.global_transform
 
 func look_at_mouse():
-	
-	
 	var plane_mouse = Plane(Vector3(0,1,0 ), position.y)
 	var ray_length = 1000
 	var mouse_position = get_viewport().get_mouse_position()

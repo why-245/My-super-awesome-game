@@ -3,19 +3,20 @@ class_name InventoryUi
 
 @onready var inventory_items: Control = $InventoryItems
 
-var item_position: int = 0
+var item_position : int = 0
 
 @export var item_slot_count : int = 8
 @export var inventory_grid : Control
 @export var inventory_slot_prefab : PackedScene = preload("res://Systems/Inventory/inventory_slot.tscn")
 
 var inventory_slots: Array[InventorySlot] = []
+var equipped_slot : int = -1
 
 
-func _unhandled_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_right") and item_position < inventory_items.get_child_count() -1:
+func _unhandled_input(_event : InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_right") and item_position < inventory_items.get_child_count() -1 and visible:
 		_update_inventory_position(1)
-	if Input.is_action_just_pressed('ui_left') and item_position > 0:
+	if Input.is_action_just_pressed('ui_left') and item_position > 0 and visible:
 		_update_inventory_position(-1)
 
 func _ready() -> void:
@@ -27,7 +28,17 @@ func _ready() -> void:
 		slot.inventory_slot_id = i
 		slot.position_id = i - 7
 		slot.set_id(0)
+		slot.OnItemEquiped.connect(item_equipped.bind())
 		inventory_slots.append(slot)
+
+func _process(_delta: float) -> void:
+		if Input.is_action_just_pressed("inventory"):
+			if visible == true:
+				close_inventory()
+				get_tree().paused = false
+			else:
+				open_inventory()
+				get_tree().paused = true
 
 func _update_inventory_position(value: int) -> void:
 	item_position += value
@@ -38,9 +49,19 @@ func pickup_item(item : ItemData):
 	inventory_slots.reverse()
 	for slot in inventory_slots:
 		if (!slot.slot_filled):
-			slot.fill_slot(item)
+			slot.fill_slot(item, false)
 			break
 	inventory_slots.reverse()
+
+func item_equipped(slotID : int):
+	if (equipped_slot != -1):
+		inventory_slots[equipped_slot].fill_slot(inventory_slots[equipped_slot].slot_data, false)
+	
+	if (slotID != equipped_slot && inventory_slots[slotID].slot_data != null):
+		inventory_slots[slotID].fill_slot(inventory_slots[slotID].slot_data, true)
+		equipped_slot = slotID
+	else:
+		equipped_slot = -1
 
 func open_inventory():
 	visible = true

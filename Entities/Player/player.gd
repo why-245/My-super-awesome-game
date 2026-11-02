@@ -38,7 +38,7 @@ func _process(_delta: float) -> void:
 	pass
 
 func shoot_bullet():
-	const bullet3D = preload("res://Entities/Objects/bullet_3d.tscn")
+	const bullet3D = preload("res://Entities/Objects/Weapons/bullet_3d.tscn")
 	var new_bullet = bullet3D.instantiate()
 	%Marker3D2.add_child(new_bullet)
 	new_bullet.transform = %Marker3D2.global_transform

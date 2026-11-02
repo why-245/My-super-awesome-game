@@ -25,12 +25,11 @@ func  _process(_delta: float) -> void:
 		
 		if Input.is_action_just_pressed("interact"):
 			if object is TEST:
-				object.queue_free()
 				var object_prefab = object.scene_file_path
 				for i in item_types.size():
 					if (item_types[i].item_model_prefab != null and item_types[i].item_model_prefab.resource_path == object_prefab):
 						print("Item id:" + str(i) + " Item Name:" + item_types[i].item_name)
-						OnItemPickUp.emit(item_types[i])
+						OnItemPickUp.emit(item_types[i], object)
 						return
 	else:
 		if current_object:

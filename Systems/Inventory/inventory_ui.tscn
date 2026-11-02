@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cdp7k4278p7sa"]
 
-[ext_resource type="Script" uid="uid://sf4g2ix21273" path="res://Systems/Inventory/inventory_ui.gd" id="1_gguo2"]
+[ext_resource type="Script" uid="uid://sf4g2ix21273" path="res://Systems/Inventory/inventory_controller.gd" id="1_gguo2"]
 
 [node name="InventoryUi" type="CanvasLayer" unique_id=1367136667 node_paths=PackedStringArray("inventory_grid")]
 process_mode = 3

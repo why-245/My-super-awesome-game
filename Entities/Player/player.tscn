@@ -3,20 +3,27 @@
 [ext_resource type="Script" uid="uid://c35k1t2d375ug" path="res://Entities/Player/player.gd" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://cdp7k4278p7sa" path="res://Systems/Inventory/inventory_ui.tscn" id="2_01a4e"]
 [ext_resource type="Script" uid="uid://da81riu5yk6sb" path="res://Entities/Player/player_interaction_controller.gd" id="2_lu8i8"]
-[ext_resource type="PackedScene" uid="uid://dma150kagnbs0" path="res://Entities/Objects/gun.tscn" id="3_btcbx"]
+[ext_resource type="PackedScene" uid="uid://dma150kagnbs0" path="res://Entities/Objects/Weapons/gun.tscn" id="3_btcbx"]
 [ext_resource type="Script" uid="uid://bq5oou3a1atok" path="res://Systems/Inventory/item_data.gd" id="4_01a4e"]
 [ext_resource type="Texture2D" uid="uid://mrbl5v4nsw2g" path="res://icon.svg" id="5_7a1se"]
-[ext_resource type="PackedScene" uid="uid://b3uyeslqdc5pc" path="res://test_object3D.tscn" id="6_01a4e"]
+[ext_resource type="PackedScene" uid="uid://b3uyeslqdc5pc" path="res://Entities/Objects/InventoryItems/test_object3D.tscn" id="6_01a4e"]
+[ext_resource type="Script" uid="uid://dnjoorfqaw8cf" path="res://Systems/Inventory/Actions/test_action.gd" id="6_7a1se"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5a1so"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jp0yl"]
 
+[sub_resource type="Resource" id="Resource_7a1se"]
+script = ExtResource("6_7a1se")
+test_text = "WAWFAWFAFW"
+metadata/_custom_type_script = "uid://dnjoorfqaw8cf"
+
 [sub_resource type="Resource" id="Resource_qf1qr"]
 script = ExtResource("4_01a4e")
 item_name = "Test"
-item_model_prefab = ExtResource("6_01a4e")
 icon = ExtResource("5_7a1se")
+action_data = SubResource("Resource_7a1se")
+item_model_prefab = ExtResource("6_01a4e")
 metadata/_custom_type_script = "uid://bq5oou3a1atok"
 
 [node name="Player" type="CharacterBody3D" unique_id=779760721]

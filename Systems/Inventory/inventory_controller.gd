@@ -45,11 +45,12 @@ func _update_inventory_position(value: int) -> void:
 	for inv_slot: InventorySlot in inventory_items.get_children():
 		inv_slot.set_id(value)
 
-func pickup_item(item : ItemData):
+func pickup_item(item : ItemData, object : Node3D):
 	inventory_slots.reverse()
 	for slot in inventory_slots:
 		if (!slot.slot_filled):
 			slot.fill_slot(item, false)
+			object.queue_free()
 			break
 	inventory_slots.reverse()
 

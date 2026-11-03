@@ -13,16 +13,16 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jp0yl"]
 
-[sub_resource type="Resource" id="Resource_7a1se"]
+[sub_resource type="Resource" id="Resource_lub02"]
 script = ExtResource("6_7a1se")
-test_text = "WAWFAWFAFW"
 metadata/_custom_type_script = "uid://dnjoorfqaw8cf"
 
-[sub_resource type="Resource" id="Resource_qf1qr"]
+[sub_resource type="Resource" id="Resource_3mqdl"]
 script = ExtResource("4_01a4e")
 item_name = "Test"
 icon = ExtResource("5_7a1se")
-action_data = SubResource("Resource_7a1se")
+action_data = SubResource("Resource_lub02")
+action_type = 1
 item_model_prefab = ExtResource("6_01a4e")
 metadata/_custom_type_script = "uid://bq5oou3a1atok"
 
@@ -62,6 +62,6 @@ transform = Transform3D(127.758835, 7.988308e-07, -7.642741e-15, 0, -1.997077e-0
 collision_mask = 3
 hit_back_faces = false
 script = ExtResource("2_lu8i8")
-item_types = Array[ExtResource("4_01a4e")]([SubResource("Resource_qf1qr")])
+item_types = Array[ExtResource("4_01a4e")]([SubResource("Resource_3mqdl")])
 
 [connection signal="OnItemPickUp" from="Body/InteractionRay" to="InventoryUi" method="pickup_item"]

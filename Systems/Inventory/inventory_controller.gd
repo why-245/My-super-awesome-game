@@ -2,6 +2,7 @@ extends CanvasLayer
 class_name InventoryUi
 
 @onready var inventory_items: Control = $InventoryItems
+@onready var context_menu : PopupMenu = PopupMenu.new()
 
 var item_position : int = 0
 
@@ -30,6 +31,9 @@ func _ready() -> void:
 		slot.set_id(0)
 		slot.OnItemEquiped.connect(item_equipped.bind())
 		inventory_slots.append(slot)
+		
+	add_child(context_menu)
+	context_menu.connect("id_pressed", Callable(self, "_on_context_menu_select"))
 
 func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("inventory"):
@@ -69,3 +73,29 @@ func open_inventory():
 
 func close_inventory():
 	visible = false
+
+func _on_item_select(slot_id : int) -> void:
+	var slot : InventorySlot = inventory_slots[slot_id]
+	context_menu.clear()
+	match _get_item_type(slot.slot_data):
+		ActionData.ACTIONTYPE.TEST_1:
+			context_menu.add_item("TEST", 0)
+			context_menu.add_item("TEST", 1)
+		ActionData.ACTIONTYPE.EQUIPPAPLE:
+			context_menu.add_item("Equip", 0)
+		ActionData.ACTIONTYPE.CONSUMABLES:
+			context_menu.add_item("Use", 0)
+		ActionData.ACTIONTYPE.KEYES:
+			context_menu.add_item("Inspect?", 0)
+		ActionData.ACTIONTYPE.PUZZLE_ITEM:
+			context_menu.add_item("Inspect", 0)
+	context_menu.set_meta("slot_id", slot_id)
+	var mous_pos: Vector2 = get_viewport().get_mouse_position()
+	var rect: Rect2i = Rect2i(mous_pos.floor(), Vector2i(1,1))
+	context_menu.popup(rect)
+
+func _on_context_menu_select(id : int) -> void:
+	return
+
+func _get_item_type(item_data : ItemData) -> ActionData.ACTIONTYPE:
+	return item_data.actiondata.actiontype

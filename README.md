@@ -6,6 +6,7 @@ This is my second attempt at making a game and learning Godot it is coded in Gd-
 -Added a Inventory system
 -Added a Inventory system and a item that you can pick up
 
+
 Installation Guide
 
 1. Install the latest release

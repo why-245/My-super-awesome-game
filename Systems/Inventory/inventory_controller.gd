@@ -29,7 +29,7 @@ func _ready() -> void:
 		slot.inventory_slot_id = i
 		slot.position_id = i - 7
 		slot.set_id(0)
-		slot.OnItemEquiped.connect(item_equipped.bind())
+		slot.OnItemEquip.connect(_on_item_select)
 		inventory_slots.append(slot)
 		
 	add_child(context_menu)
@@ -77,25 +77,26 @@ func close_inventory():
 func _on_item_select(slot_id : int) -> void:
 	var slot : InventorySlot = inventory_slots[slot_id]
 	context_menu.clear()
-	match _get_item_type(slot.slot_data):
+	match _get_action_type(slot.slot_data):
 		ActionData.ACTIONTYPE.TEST_1:
 			context_menu.add_item("TEST", 0)
-			context_menu.add_item("TEST", 1)
-		ActionData.ACTIONTYPE.EQUIPPAPLE:
-			context_menu.add_item("Equip", 0)
-		ActionData.ACTIONTYPE.CONSUMABLES:
-			context_menu.add_item("Use", 0)
-		ActionData.ACTIONTYPE.KEYES:
-			context_menu.add_item("Inspect?", 0)
-		ActionData.ACTIONTYPE.PUZZLE_ITEM:
-			context_menu.add_item("Inspect", 0)
+			context_menu.add_item("Equip", 1)
 	context_menu.set_meta("slot_id", slot_id)
 	var mous_pos: Vector2 = get_viewport().get_mouse_position()
 	var rect: Rect2i = Rect2i(mous_pos.floor(), Vector2i(1,1))
 	context_menu.popup(rect)
 
 func _on_context_menu_select(id : int) -> void:
-	return
+	var slot_id = context_menu.get_meta("slot_id")
+	var slot : InventorySlot = inventory_slots[slot_id]
+	
+	match _get_action_type(slot.slot_data):
+		ActionData.ACTIONTYPE.TEST_1:
+			match id: 
+				0: 
+					print("TESTTESTTEST")
+				1:
+					item_equipped(slot_id)
 
-func _get_item_type(item_data : ItemData) -> ActionData.ACTIONTYPE:
-	return item_data.actiondata.actiontype
+func _get_action_type(item_data : ItemData) -> ActionData.ACTIONTYPE:
+	return item_data.action_data.action_type

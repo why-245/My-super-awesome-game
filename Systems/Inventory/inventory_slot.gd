@@ -1,7 +1,7 @@
 extends Button
 class_name InventorySlot
 
-signal OnItemEquiped(SlotID)
+signal OnItemEquip(SlotID)
 
 @onready var equipped_item: Panel = $EquippedItem
 
@@ -43,5 +43,5 @@ func fill_slot(data : ItemData, equipped : bool):
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and slot_data != null:
-		if (event.button_index == MOUSE_BUTTON_LEFT and event.double_click):
-			OnItemEquiped.emit(inventory_slot_id)
+		if (event.button_index == MOUSE_BUTTON_LEFT):
+			OnItemEquip.emit(inventory_slot_id)

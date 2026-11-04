@@ -1,19 +1,25 @@
 [gd_scene format=3 uid="uid://dma150kagnbs0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r8ywq"]
-albedo_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+[ext_resource type="Shader" uid="uid://b4l4hv74cw7he" path="res://Common/object_shader.gdshader" id="1_7t8hv"]
+[ext_resource type="Texture2D" uid="uid://mrbl5v4nsw2g" path="res://icon.svg" id="2_nsswq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7t8hv"]
+render_priority = 0
+shader = ExtResource("1_7t8hv")
+shader_parameter/colour_texture = ExtResource("2_nsswq")
+shader_parameter/vertex_wobble = 1.0
+shader_parameter/affine_mapping = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_jp0yl"]
+material = SubResource("ShaderMaterial_7t8hv")
 size = Vector3(1, 1, 0.5249939)
 
 [node name="Node3D" type="Node3D" unique_id=829829562]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=478333761]
 transform = Transform3D(0.21952975, 0, 0, 0, 0.20943584, 0, 0, 0, 1.3726504, 0, 0.12720713, -0.31379506)
-material_overlay = SubResource("StandardMaterial3D_r8ywq")
 mesh = SubResource("BoxMesh_jp0yl")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=248228628]
 transform = Transform3D(0.21952975, 0, 0, 0, -9.154731e-09, -0.55801207, 0, 0.20943584, -2.439148e-08, 0, -0.10234626, -0.059772275)
-material_overlay = SubResource("StandardMaterial3D_r8ywq")
 mesh = SubResource("BoxMesh_jp0yl")

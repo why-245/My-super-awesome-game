@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cdp7k4278p7sa" path="res://Systems/Inventory/inventory_ui.tscn" id="2_01a4e"]
 [ext_resource type="Script" uid="uid://da81riu5yk6sb" path="res://Entities/Player/player_interaction_controller.gd" id="2_lu8i8"]
 [ext_resource type="PackedScene" uid="uid://dma150kagnbs0" path="res://Entities/Objects/Weapons/gun.tscn" id="3_btcbx"]
+[ext_resource type="Shader" uid="uid://46gt7s52my6o" path="res://Common/post_processing.gdshader" id="3_lub02"]
+[ext_resource type="Shader" uid="uid://b4l4hv74cw7he" path="res://Common/object_shader.gdshader" id="3_x1y6q"]
 [ext_resource type="Script" uid="uid://bq5oou3a1atok" path="res://Systems/Inventory/item_data.gd" id="4_01a4e"]
 [ext_resource type="Texture2D" uid="uid://mrbl5v4nsw2g" path="res://icon.svg" id="5_7a1se"]
 [ext_resource type="PackedScene" uid="uid://b3uyeslqdc5pc" path="res://Entities/Objects/InventoryItems/test_object3D.tscn" id="6_01a4e"]
@@ -11,7 +13,14 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5a1so"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ap3xn"]
+render_priority = 0
+shader = ExtResource("3_x1y6q")
+shader_parameter/vertex_wobble = 1.0
+shader_parameter/affine_mapping = 0.2
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jp0yl"]
+material = SubResource("ShaderMaterial_ap3xn")
 
 [sub_resource type="Resource" id="Resource_lub02"]
 script = ExtResource("6_7a1se")
@@ -25,6 +34,15 @@ action_data = SubResource("Resource_lub02")
 action_type = 1
 item_model_prefab = ExtResource("6_01a4e")
 metadata/_custom_type_script = "uid://bq5oou3a1atok"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5a1so"]
+render_priority = -1
+shader = ExtResource("3_lub02")
+shader_parameter/dithered_amount = 0.4
+
+[sub_resource type="QuadMesh" id="QuadMesh_jp0yl"]
+flip_faces = true
+size = Vector2(2, 2)
 
 [node name="Player" type="CharacterBody3D" unique_id=779760721]
 script = ExtResource("1_l8h54")
@@ -41,7 +59,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 1.4771864e-07, -9.354239e-08, 7.1054274e-15, 0.5350001, 0.8448521, 1.7484555e-07, -0.8448521, 0.5350001, 0, 8.079237, 4.2410374)
 projection = 1
 fov = 104.06249
-size = 7.997686
+size = 10.184
 far = 4062.8
 
 [node name="Body" type="MeshInstance3D" parent="." unique_id=2051763934]
@@ -63,5 +81,11 @@ collision_mask = 3
 hit_back_faces = false
 script = ExtResource("2_lu8i8")
 item_types = Array[ExtResource("4_01a4e")]([SubResource("Resource_3mqdl")])
+
+[node name="ScreenQuad" type="MeshInstance3D" parent="." unique_id=1502061037]
+transform = Transform3D(1, 1.4771864e-07, -9.354239e-08, 7.1054274e-15, 0.5350001, 0.8448521, 1.7484555e-07, -0.8448521, 0.5350001, 0, 8.079237, 4.2410374)
+material_override = SubResource("ShaderMaterial_5a1so")
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_jp0yl")
 
 [connection signal="OnItemPickUp" from="Body/InteractionRay" to="InventoryUi" method="pickup_item"]

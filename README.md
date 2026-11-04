@@ -1,6 +1,9 @@
 
 This is my second attempt at making a game and learning Godot it is coded in Gd-script and made without any AI. My goal is to make a top-down isometric survival(ish) horror game with at least one finished level. I got interested in game development after I played SIGNALIS (which I strongly recommend you to play) and it inspired this project :)
 
+
+
+
 -Added a player character with a basic shoot function and a isometric camera
 -Added a intractable objects and a enemy 
 -Added a Inventory system

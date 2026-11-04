@@ -5,15 +5,13 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvjyp"]
 bg_color = Color(0.2, 0.2, 0.2, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i36m7"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5a1so"]
 
 [node name="InventorySlot" type="Button" unique_id=788182152 node_paths=PackedStringArray("icon_slot")]
 custom_minimum_size = Vector2(100, 100)
 custom_maximum_size = Vector2(100, 100)
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_xvjyp")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_i36m7")
 script = ExtResource("1_q1hqh")
 icon_slot = NodePath("TextureRect")
 

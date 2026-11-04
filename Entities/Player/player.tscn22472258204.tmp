@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://hsqivn0j0hvp"]
+
+[ext_resource type="Script" uid="uid://c35k1t2d375ug" path="res://Entities/Player/player.gd" id="1_l8h54"]
+[ext_resource type="PackedScene" uid="uid://dma150kagnbs0" path="res://Entities/Objects/gun.tscn" id="3_btcbx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5a1so"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jp0yl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jp0yl"]
+size = Vector3(0.47937012, 0.21459961, 0.47149658)
+
+[node name="Player" type="CharacterBody3D" unique_id=779760721]
+script = ExtResource("1_l8h54")
+
+[node name="interaction_ray" type="RayCast3D" parent="." unique_id=1151935958]
+unique_name_in_owner = true
+transform = Transform3D(25.318943, -1.847057e-14, 3.3407388e-22, 0, -1.0563935e-07, -0.9999971, 1.9350614e-13, 2.4167466, -4.371126e-08, -0.03356117, 1.3209445, -0.3809302)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=68562120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_5a1so")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1221979310]
+unique_name_in_owner = true
+transform = Transform3D(1, 1.4771864e-07, -9.354239e-08, 7.1054274e-15, 0.5350001, 0.8448521, 1.7484555e-07, -0.8448521, 0.5350001, 0, 8.079237, 4.2410374)
+projection = 1
+fov = 104.06249
+size = 7.997686
+far = 4062.8
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=2051763934]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_jp0yl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body" unique_id=1342483984]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0055369157, 0.32094455, -0.5211432)
+mesh = SubResource("BoxMesh_jp0yl")
+
+[node name="Node3D" parent="Body" unique_id=829829562 instance=ExtResource("3_btcbx")]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0.61158484, 0.028898954, -0.030927943)
+
+[node name="Marker3D2" type="Marker3D" parent="Body/Node3D" unique_id=2145971219]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008175731, 0.15044177, -0.7235056)

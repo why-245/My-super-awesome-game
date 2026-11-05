@@ -39,11 +39,26 @@ How to run
 2. Ignore potential Windows security warnings
 
 
-
 How to play
--WASD: movement
--SHIFT: Sprint
--Shoot: LMB
--"I": Inventory
--"A D": Navigate Inventory menu
--Double left click: Equip
+
+WASD: movement
+
+SHIFT: Sprint
+
+Shoot: LMB
+
+"I": Inventory
+
+"A D": Navigate Inventory menu
+
+Double left click: Equip (On inventory slot)
+
+
+
+
+
+
+<img width="1129" height="618" alt="Screenshot 2026-11-05 222019" src="https://github.com/user-attachments/assets/1fac3e85-e3f1-4d8e-80c4-6e9b9e1fe066" />
+
+<img width="1004" height="615" alt="Screenshot 2026-11-05 222005" src="https://github.com/user-attachments/assets/b91f5309-cd6b-426d-a210-db4f76445aac" />
+

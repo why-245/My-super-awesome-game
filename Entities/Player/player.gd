@@ -4,15 +4,17 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 var current_speed = SPEED
-
+var rotation_speed = 5
 
 func _physics_process(delta: float) -> void:
-
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	if input_dir != Vector2(0,0):
+			%Body.rotation.y = lerp_angle(%Body.rotation.y, atan2(-direction.x, -direction.z), delta * rotation_speed)
+	
 	if direction:
 		velocity.x = direction.x * current_speed
 		velocity.z = direction.z * current_speed
@@ -21,9 +23,11 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, current_speed)
 	
 	move_and_slide()
-	look_at_mouse()
 	
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("aim"):
+		look_at_mouse()
+	
+	if Input.is_action_just_pressed("shoot") and Input.is_action_pressed("aim"):
 		shoot_bullet()
 	
 	if Input.is_action_just_pressed("interact"):

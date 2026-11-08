@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://hsqivn0j0hvp"]
+
+[ext_resource type="Script" uid="uid://c35k1t2d375ug" path="res://Entities/Player/player.gd" id="1_l8h54"]
+[ext_resource type="PackedScene" uid="uid://cdp7k4278p7sa" path="res://Systems/Inventory/inventory_ui.tscn" id="2_01a4e"]
+[ext_resource type="Script" uid="uid://da81riu5yk6sb" path="res://Entities/Player/player_interaction_controller.gd" id="2_lu8i8"]
+[ext_resource type="Shader" uid="uid://46gt7s52my6o" path="res://Common/post_processing.gdshader" id="3_lub02"]
+[ext_resource type="Shader" uid="uid://b4l4hv74cw7he" path="res://Common/object_shader.gdshader" id="3_x1y6q"]
+[ext_resource type="Script" uid="uid://bq5oou3a1atok" path="res://Systems/Inventory/item_data.gd" id="4_01a4e"]
+[ext_resource type="Texture2D" uid="uid://mrbl5v4nsw2g" path="res://icon.svg" id="5_7a1se"]
+[ext_resource type="PackedScene" uid="uid://b3uyeslqdc5pc" path="res://Entities/Objects/InventoryItems/test_object3D.tscn" id="6_01a4e"]
+[ext_resource type="Script" uid="uid://dnjoorfqaw8cf" path="res://Systems/Inventory/Actions/test_action.gd" id="6_7a1se"]
+[ext_resource type="Script" uid="uid://cs4bx65kirkej" path="res://Entities/Player/inventory_controller.gd" id="10_ap3xn"]
+[ext_resource type="Script" uid="uid://clao4ce7hxqln" path="res://Systems/Combat/aim_ray.gd" id="11_ap3xn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5a1so"]
+render_priority = -1
+shader = ExtResource("3_lub02")
+shader_parameter/dithered_amount = 0.4
+
+[sub_resource type="QuadMesh" id="QuadMesh_jp0yl"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5a1so"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ap3xn"]
+render_priority = 0
+shader = ExtResource("3_x1y6q")
+shader_parameter/vertex_wobble = 1.0
+shader_parameter/affine_mapping = 0.2
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jp0yl"]
+material = SubResource("ShaderMaterial_ap3xn")
+
+[sub_resource type="Resource" id="Resource_lub02"]
+script = ExtResource("6_7a1se")
+metadata/_custom_type_script = "uid://dnjoorfqaw8cf"
+
+[sub_resource type="Resource" id="Resource_3mqdl"]
+script = ExtResource("4_01a4e")
+item_name = "Test"
+icon = ExtResource("5_7a1se")
+action_data = SubResource("Resource_lub02")
+action_type = 1
+item_model_prefab = ExtResource("6_01a4e")
+metadata/_custom_type_script = "uid://bq5oou3a1atok"
+
+[node name="Player" type="CharacterBody3D" unique_id=779760721 node_paths=PackedStringArray("aim_ray")]
+script = ExtResource("1_l8h54")
+aim_ray = NodePath("AimingRay")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1221979310]
+unique_name_in_owner = true
+transform = Transform3D(1, 1.4771864e-07, -9.354239e-08, 7.1054274e-15, 0.5350001, 0.8448521, 1.7484555e-07, -0.8448521, 0.5350001, 0, 10.717313, 4.767486)
+projection = 1
+fov = 104.06249
+size = 10.184
+far = 4062.8
+
+[node name="ScreenQuad" type="MeshInstance3D" parent="." unique_id=1502061037]
+material_override = SubResource("ShaderMaterial_5a1so")
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_jp0yl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=68562120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_5a1so")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=2051763934]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_jp0yl")
+
+[node name="InteractionRay" type="RayCast3D" parent="Body" unique_id=1062597944]
+unique_name_in_owner = true
+transform = Transform3D(127.758835, 7.988308e-07, -7.642741e-15, 0, -1.997077e-07, -0.9999999, -2.2338065e-05, 4.5687795, -4.3711385e-08, 6.775822e-08, 0.17894185, 0.38753188)
+visible = false
+collision_mask = 3
+hit_back_faces = false
+script = ExtResource("2_lu8i8")
+item_types = Array[ExtResource("4_01a4e")]([SubResource("Resource_3mqdl")])
+
+[node name="AimingRay" type="RayCast3D" parent="." unique_id=301987804]
+transform = Transform3D(1.8522778, 0, 0, 0, -4.3428807e-07, -0.99999976, 0, 9.935353, -4.3711378e-08, 0, 1.3565662, -0.46919215)
+collide_with_areas = true
+script = ExtResource("11_ap3xn")
+
+[node name="InventoryController" type="Node" parent="." unique_id=1324260752 node_paths=PackedStringArray("inventory_grid")]
+script = ExtResource("10_ap3xn")
+inventory_grid = NodePath("InventoryUi/InventoryItems")
+
+[node name="InventoryUi" parent="InventoryController" unique_id=1367136667 instance=ExtResource("2_01a4e")]
+visible = false
+
+[connection signal="OnItemPickUp" from="Body/InteractionRay" to="InventoryController" method="pickup_item"]
+
+[editable path="InventoryController/InventoryUi"]

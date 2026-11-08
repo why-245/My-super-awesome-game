@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://on0fxcidomll"]
+
+[ext_resource type="Script" uid="uid://5ufn01jqdf4" path="res://Entities/Objects/Weapons/Revolver/gun.gd" id="1_kkcwe"]
+
+[node name="Node3D" type="Node3D" unique_id=829829562]
+script = ExtResource("1_kkcwe")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=220687092]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2937572, -0.5185318)

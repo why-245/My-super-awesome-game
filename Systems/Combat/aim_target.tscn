@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bwgjjywgtjdc4"]
+
+[ext_resource type="Script" uid="uid://ix0qwt6qxwq3" path="res://Systems/Combat/aiming_target.gd" id="1_djwpv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jp0yl"]
+
+[node name="AimTarget" type="Area3D" unique_id=605460931 groups=["aim_targets"]]
+script = ExtResource("1_djwpv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2134201564]
+shape = SubResource("CapsuleShape3D_jp0yl")
+debug_color = Color(0, 1, 0.9666667, 0.41960785)

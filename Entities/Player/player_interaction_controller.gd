@@ -1,7 +1,7 @@
 extends RayCast3D
-signal OnItemPickUp(item)
 
-@export var item_types : Array [ItemData] = []
+#signal OnItemPickUp(item)
+
 var current_object = get_collider()
 
 func  _process(_delta: float) -> void:
@@ -18,17 +18,14 @@ func  _process(_delta: float) -> void:
 					if children is ItemPickUpPrompt:
 						children.make_visible()
 		
-		if Input.is_action_just_pressed("interact"):
-			if object is TEST:
-				var object_prefab = object.scene_file_path
-				for i in item_types.size():
-					if (item_types[i].item_model_prefab != null and item_types[i].item_model_prefab.resource_path == object_prefab):
-						OnItemPickUp.emit(item_types[i], object)
-						return
+		#if Input.is_action_just_pressed("interact"):
+			#if object.has_node("res://Systems/Inventory/item_data.tscn"):
+				#print("efgsdf")
+				#OnItemPickUp.emit(ItemData, object)
+			#return
 	else:
 		if current_object:
 			for children in current_object.get_children():
 				if children is ItemPickUpPrompt:
 					children.make_invisible()
 			current_object = null
-	

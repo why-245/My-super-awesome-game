@@ -1,17 +1,35 @@
 extends Button
 class_name InventorySlot
 
-signal OnItemEquip(SlotID)
+#signal OnSlotSelect(SlotID)
+signal SlotClicked(index : int, button : int)
 
-@onready var equipped_item: Panel = $EquippedItem
+const max_stack_size = 20
 
+#@export_range(1, max_stack_size) var quantity: int = 1: set = set_quantity
 @export var icon_slot : TextureRect
+#@export var item_data : ItemData
 
 var position_id : int = 0
 var inventory_slot_id = -1
 var slot_filled: bool = false
 
-var slot_data : ItemData
+@onready var item_count: Label = $TextureRect/ItemCount
+@onready var equipped_item: Panel = $EquippedItem
+
+#func _gui_input(event: InputEvent) -> void:
+#	if event is InputEventMouseButton and item_data != null:
+#		if (event.button_index == MOUSE_BUTTON_LEFT):
+#			OnSlotSelect.emit(inventory_slot_id)
+
+func set_slot_data(slot_data : SlotData) -> void:
+	var item_data = slot_data.item_data
+	icon_slot.texture = item_data.icon
+	
+	if slot_data.quantity > 1:
+		item_count.text = str(slot_data.quantity)
+		item_count.show()
+
 
 func set_id(pos: int) -> void:
 	position_id += pos
@@ -35,13 +53,6 @@ func _configure(new_position: Vector2, new_scale: Vector2, value : bool) -> void
 	
 	visible = value
 
-func fill_slot(data : ItemData, equipped : bool):
-	equipped_item.visible = equipped
-	slot_data = data
-	slot_filled = true
-	icon_slot.texture = data.icon
-
 func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and slot_data != null:
-		if (event.button_index == MOUSE_BUTTON_LEFT):
-			OnItemEquip.emit(inventory_slot_id)
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		SlotClicked.emit(get_index(), event.button_index)

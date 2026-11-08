@@ -1,10 +1,14 @@
 extends CharacterBody3D
 
-@onready var sprint_speed = 10.00
+@export_group("Combat Settings")
+@export var aim_ray : AimingRay
 
-const SPEED = 5.0
+@export var inventory_data : InventoryData
+
+var  SPEED = 5.0
+var  sprint_speed = 10.00
 var current_speed = SPEED
-var rotation_speed = 5
+var rotation_speed = 10
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -27,12 +31,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("aim"):
 		look_at_mouse()
 	
-	if Input.is_action_just_pressed("shoot") and Input.is_action_pressed("aim"):
-		shoot_bullet()
-	
-	if Input.is_action_just_pressed("interact"):
-		pass
-	
 	if Input.is_action_pressed("sprint"):
 		current_speed = sprint_speed
 	else:
@@ -40,12 +38,12 @@ func _physics_process(delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	pass
-
-func shoot_bullet():
-	const bullet3D = preload("res://Entities/Objects/Weapons/bullet_3d.tscn")
-	var new_bullet = bullet3D.instantiate()
-	%Marker3D2.add_child(new_bullet)
-	new_bullet.transform = %Marker3D2.global_transform
+	var enemy = aim_ray.find_closest_enemy()
+	if enemy == null:
+		return
+	
+	var enemy_position = Vector3(enemy.global_position.x, self.global_position.y, enemy.global_position.z)
+	look_at(enemy_position)
 
 func look_at_mouse():
 	var plane_mouse = Plane(Vector3(0,1,0 ), position.y)
@@ -57,3 +55,7 @@ func look_at_mouse():
 	
 	%Body.look_at(mouse_position_on_screen, Vector3.UP, 0)
 	%Body.rotation.x = 0
+
+#func _unhandled_input(_event: InputEvent) -> void:
+	#if Input.is_action_just_pressed("aim"):
+		#auto_aim()

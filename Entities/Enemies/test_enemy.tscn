@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bo687mdoqyi4"]
+
+[ext_resource type="PackedScene" uid="uid://bwgjjywgtjdc4" path="res://Systems/Combat/aim_target.tscn" id="1_ghv5c"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jp0yl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jp0yl"]
+
+[node name="TestEnemy" type="AnimatableBody3D" unique_id=1226870746]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1224323139]
+mesh = SubResource("CapsuleMesh_jp0yl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=925356366 groups=["aim_targets"]]
+shape = SubResource("CapsuleShape3D_jp0yl")
+
+[node name="AimTarget" parent="." unique_id=605460931 instance=ExtResource("1_ghv5c")]

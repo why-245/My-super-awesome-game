@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cnldp3h0t8tu0"]
+
+[ext_resource type="Script" uid="uid://bq5oou3a1atok" path="res://Systems/Inventory/item_data.gd" id="1_6o2s4"]
+[ext_resource type="Texture2D" uid="uid://mrbl5v4nsw2g" path="res://icon.svg" id="1_nvmrp"]
+
+[resource]
+script = ExtResource("1_6o2s4")
+item_name = "Test Object"
+item_description = "A very cool looking object"
+stackable = true
+icon = ExtResource("1_nvmrp")
+metadata/_custom_type_script = "uid://bq5oou3a1atok"

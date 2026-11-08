@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://b3uyeslqdc5pc"]
+
+[ext_resource type="Shader" uid="uid://b4l4hv74cw7he" path="res://Common/object_shader.gdshader" id="2_01df6"]
+[ext_resource type="PackedScene" uid="uid://bagi4twhdpqxb" path="res://Entities/Objects/label_3d.tscn" id="2_8t5nf"]
+[ext_resource type="Texture2D" uid="uid://vgv0fed2fvfs" path="res://missing_textures.1-1785952419.png" id="3_8t5nf"]
+[ext_resource type="PackedScene" uid="uid://cekqsqqg278l5" path="res://Systems/Inventory/item_data.tscn" id="4_nwm5a"]
+[ext_resource type="Texture2D" uid="uid://mrbl5v4nsw2g" path="res://icon.svg" id="5_71ew1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_01df6"]
+render_priority = 0
+shader = ExtResource("2_01df6")
+shader_parameter/colour_texture = ExtResource("3_8t5nf")
+shader_parameter/vertex_wobble = 0.5999999865888
+shader_parameter/affine_mapping = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_71ew1"]
+material = SubResource("ShaderMaterial_01df6")
+size = Vector3(1, 1.8283081, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5a1so"]
+size = Vector3(1, 3.770996, 1)
+
+[node name="StaticBody3D" type="StaticBody3D" unique_id=62076919]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=240788387]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91415405, 0)
+mesh = SubResource("BoxMesh_71ew1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=642734870]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.385498, 0)
+shape = SubResource("BoxShape3D_5a1so")
+
+[node name="Label3D" parent="." unique_id=1975442167 instance=ExtResource("2_8t5nf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9554722, 0)
+billboard = 1
+
+[node name="ItemData" parent="." unique_id=1864716098 instance=ExtResource("4_nwm5a")]
+icon = ExtResource("5_71ew1")
+item_model_prefab = null

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ddt2jhoewcatg"]
 
-[ext_resource type="Script" uid="uid://6gaqqqqd2q6d" path="res://Systems/Inventory/inventory_slot.gd" id="1_q1hqh"]
+[ext_resource type="Script" uid="uid://6gaqqqqd2q6d" path="res://Systems/Inventory/ui/inventory_slot.gd" id="1_317ms"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvjyp"]
 bg_color = Color(0.2, 0.2, 0.2, 1)
@@ -12,7 +12,7 @@ custom_minimum_size = Vector2(100, 100)
 custom_maximum_size = Vector2(100, 100)
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_xvjyp")
-script = ExtResource("1_q1hqh")
+script = ExtResource("1_317ms")
 icon_slot = NodePath("TextureRect")
 
 [node name="EquippedItem" type="Panel" parent="." unique_id=397217157]
@@ -41,3 +41,17 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.7999997, 0.79999995)
 expand_mode = 1
+
+[node name="ItemCount" type="Label" parent="TextureRect" unique_id=1412072034]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.499977
+offset_top = -23.000015
+offset_right = 0.5000229
+offset_bottom = -1.5258789e-05
+grow_horizontal = 0
+grow_vertical = 0

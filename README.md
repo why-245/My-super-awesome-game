@@ -1,14 +1,14 @@
 
-A isometric topdown survival horror game. That will have a inventory manegment system, leavels,combat system with diferent types of enemys. a gameplay will focus on solving puzzels and not dying. The story will probly be non existant as I will focus on the gamplay,
+A isometric top down survival horror game. That will have a inventory management system, levels,combat system with different types of enemy's. a gameplay will focus on solving puzzles and not dying. The story will probably be non existent as I will focus on the gameplay,
 
-The game will have a ps 1 / psx style to it and the setting will be a 1920-40s sanitorium on a isolated island.
+The game will have a ps 1 / psx style to it and the setting will be a 1920-40s sanitarium on a isolated island.
 
-This is my second attempt at making a game and learning Godot,it will be coded in Gd-script and Gd-shaders. It will be developed without AI and is hevily inspired by Signalis (which you should play!!!).
+This is my second attempt at making a game and learning Godot,it will be coded in Gd-script and Gd-shaders. It will be developed without AI and is heavily inspired by Signalis (which you should play!!!).
 
-Changelog
+Change log
 
 v0.1.0
--Added player with Godots built in movment
+-Added player with Godots built in movent
 -Added a world scene
 -Added a basic shoot function for the player and a placeholder gun scene
 -Added a interaction system with a RayCast3D
@@ -39,11 +39,26 @@ How to run
 2. Ignore potential Windows security warnings
 
 
-
 How to play
--WASD: movement
--SHIFT: Sprint
--Shoot: LMB
--"I": Inventory
--"A D": Navigate Inventory menu
--Double left click: Equip
+
+WASD: movement
+
+SHIFT: Sprint
+
+Shoot: LMB
+
+"I": Inventory
+
+"A D": Navigate Inventory menu
+
+Double left click: Equip (On inventory slot)
+
+
+
+
+
+
+<img width="1129" height="618" alt="Screenshot 2026-11-05 222019" src="https://github.com/user-attachments/assets/1fac3e85-e3f1-4d8e-80c4-6e9b9e1fe066" />
+
+<img width="1004" height="615" alt="Screenshot 2026-11-05 222005" src="https://github.com/user-attachments/assets/b91f5309-cd6b-426d-a210-db4f76445aac" />
+

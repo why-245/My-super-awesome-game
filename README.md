@@ -22,7 +22,11 @@ v.0.2.0
 -Added a "equip" function that highlights the inventory slot. Accessible from the inventory menu.
 -Removed the intractable object from the world level due to the rework
 
-
+v.0.3.0
+-More Inventory work which is unfinished
+-Added 2 shaders one for objects and another for the camera
+-Started work on a combat system with a auto aim / target lock function which is unfinished.
+-Player turns towards the direction they are moving and only looks at the mouse when you are aiming.
 
 Only compatible with Windows!!!
 
@@ -46,6 +50,8 @@ WASD: movement
 SHIFT: Sprint
 
 Shoot: LMB
+
+"F": Interact
 
 "I": Inventory
 

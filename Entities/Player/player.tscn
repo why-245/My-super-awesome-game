@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://b4l4hv74cw7he" path="res://Common/object_shader.gdshader" id="3_x1y6q"]
 [ext_resource type="PackedScene" uid="uid://do0hh5ss78ihb" path="res://Systems/Inventory/ui/inventory.tscn" id="6_4wf4l"]
 [ext_resource type="Texture2D" uid="uid://mrbl5v4nsw2g" path="res://icon.svg" id="8_7a1se"]
+[ext_resource type="Script" uid="uid://c7bqadopqf6s2" path="res://Systems/Inventory/inventory_handler.gd" id="9_lub02"]
 [ext_resource type="Script" uid="uid://clao4ce7hxqln" path="res://Systems/Combat/aim_ray.gd" id="11_ap3xn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5a1so"]
@@ -85,5 +86,8 @@ script = ExtResource("11_ap3xn")
 
 [node name="InventoryUi" parent="." unique_id=1888918583 instance=ExtResource("6_4wf4l")]
 visible = false
+
+[node name="InventoryHandler" type="Node" parent="." unique_id=1416933570]
+script = ExtResource("9_lub02")
 
 [editable path="InventoryUi"]

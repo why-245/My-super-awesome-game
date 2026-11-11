@@ -1,6 +1,8 @@
 extends RayCast3D
 
 #signal OnItemPickUp(item)
+@onready var player: CharacterBody3D = $"../.."
+@export var slot_data : SlotData
 
 var current_object = get_collider()
 
@@ -17,12 +19,13 @@ func  _process(_delta: float) -> void:
 				for children in object.get_children():
 					if children is ItemPickUpPrompt:
 						children.make_visible()
-		
-		#if Input.is_action_just_pressed("interact"):
-			#if object.has_node("res://Systems/Inventory/item_data.tscn"):
-				#print("efgsdf")
-				#OnItemPickUp.emit(ItemData, object)
-			#return
+			
+		if Input.is_action_just_pressed("interact"):
+			print("wse")
+			if player.inventory_data.pick_up_slot_data(slot_data):
+				object.queue_free()
+			return
+			
 	else:
 		if current_object:
 			for children in current_object.get_children():

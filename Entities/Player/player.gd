@@ -2,7 +2,6 @@ extends CharacterBody3D
 
 @export_group("Combat Settings")
 @export var aim_ray : AimingRay
-
 @export var inventory_data : InventoryData
 
 var  SPEED = 5.0

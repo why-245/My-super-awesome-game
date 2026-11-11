@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://hsqivn0j0hvp" path="res://Entities/Player/player.tscn" id="1_5a7ea"]
 [ext_resource type="Texture2D" uid="uid://mrbl5v4nsw2g" path="res://icon.svg" id="1_5ukr8"]
-[ext_resource type="Script" uid="uid://c7bqadopqf6s2" path="res://Systems/Inventory/main.gd" id="1_45d1s"]
 [ext_resource type="PackedScene" uid="uid://b3uyeslqdc5pc" path="res://Entities/Objects/InventoryItems/test_object3D.tscn" id="3_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://bo687mdoqyi4" path="res://Entities/Enemies/test_enemy.tscn" id="4_gjpho"]
 
@@ -29,33 +28,30 @@ size = Vector2(20, 20)
 
 [node name="World" type="Node3D" unique_id=1918096829]
 
-[node name="Node" type="Node" parent="." unique_id=587178572]
-script = ExtResource("1_45d1s")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Node" unique_id=738782384]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=738782384]
 environment = SubResource("Environment_j0p05")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node" unique_id=806178347]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=806178347]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 11.582227, -3.917708)
 shadow_enabled = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node" unique_id=1685561707]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1685561707]
 mesh = SubResource("PlaneMesh_f1bq1")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/MeshInstance3D" unique_id=1977088129]
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=1977088129]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/MeshInstance3D/StaticBody3D" unique_id=261251089]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=261251089]
 shape = SubResource("WorldBoundaryShape3D_ex4vr")
 
-[node name="Player" parent="Node" unique_id=779760721 instance=ExtResource("1_5a7ea")]
+[node name="Player" parent="." unique_id=779760721 instance=ExtResource("1_5a7ea")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.440145, 0, 0)
 
-[node name="StaticBody3D" parent="Node" unique_id=62076919 instance=ExtResource("3_5a7ea")]
+[node name="StaticBody3D" parent="." unique_id=62076919 instance=ExtResource("3_5a7ea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0509458, 0, 0)
 
-[node name="TestEnemy" parent="Node" unique_id=1226870746 groups=["aim_targets"] instance=ExtResource("4_gjpho")]
+[node name="TestEnemy" parent="." unique_id=1226870746 groups=["aim_targets"] instance=ExtResource("4_gjpho")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 5)
 
-[editable path="Node/Player"]
-[editable path="Node/Player/InventoryUi"]
+[editable path="Player"]
+[editable path="Player/InventoryUi"]

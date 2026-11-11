@@ -8,6 +8,7 @@ var i : int = 0
 
 func set_inventory_data(inventory_data : InventoryData) -> void:
 	add_slots_to_inventory(inventory_data)
+	inventory_data.inventory_updated.connect(add_slots_to_inventory)
 
 func add_slots_to_inventory(inventory_data : InventoryData) -> void:
 	for slot: InventorySlot in get_children():
@@ -21,10 +22,9 @@ func add_slots_to_inventory(inventory_data : InventoryData) -> void:
 		
 		slot.SlotClicked.connect(inventory_data.on_slot_clicked)
 		
-		slot.inventory_slot_id = i
-		slot.position_id = i - 8
+		slot.inventory_slot_id = -i
+		slot.position_id = i -8
 		slot.set_id(0)
-		
 		
 		if slot_data != null:
 			slot.set_slot_data(slot_data)

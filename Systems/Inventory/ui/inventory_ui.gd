@@ -26,8 +26,13 @@ func _update_inventory_position(value: int) -> void:
 	for inv_slot: InventorySlot in inventory_grid.get_children():
 		inv_slot.set_id(value)
 
+func reset_inventory_position():
+	for inv_slot: InventorySlot in inventory_grid.get_children():
+		inv_slot.set_id(-item_position)
+	item_position = 0
+
 func open_inventory():
 	visible = true
-
 func close_inventory():
 	visible = false
+	reset_inventory_position()

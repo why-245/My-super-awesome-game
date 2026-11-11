@@ -6,9 +6,7 @@ signal SlotClicked(index : int, button : int)
 
 const max_stack_size = 20
 
-#@export_range(1, max_stack_size) var quantity: int = 1: set = set_quantity
 @export var icon_slot : TextureRect
-#@export var item_data : ItemData
 
 var position_id : int = 0
 var inventory_slot_id = -1

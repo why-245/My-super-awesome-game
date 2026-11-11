@@ -15,3 +15,8 @@ mesh = SubResource("CapsuleMesh_jp0yl")
 shape = SubResource("CapsuleShape3D_jp0yl")
 
 [node name="AimTarget" parent="." unique_id=605460931 instance=ExtResource("1_ghv5c")]
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1410903694]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2391987, 0)
+billboard = 1
+text = "Unfinished combat stuff"

@@ -47,7 +47,7 @@ inventory_data = ExtResource("2_7a1se")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1221979310]
 unique_name_in_owner = true
-transform = Transform3D(1, 1.4771864e-07, -9.354239e-08, 7.1054274e-15, 0.5350001, 0.8448521, 1.7484555e-07, -0.8448521, 0.5350001, 0, 10.717313, 4.767486)
+transform = Transform3D(1, 1.4771864e-07, -9.3542376e-08, -5.9487104e-09, 0.5634346, 0.8261608, 1.7474432e-07, -0.8261608, 0.5634346, 0, 10.717313, 4.767486)
 projection = 1
 fov = 104.06249
 size = 10.184
@@ -76,7 +76,7 @@ hit_back_faces = false
 script = ExtResource("2_lu8i8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body" unique_id=456646297]
-transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, -1.7999064e-08, 0.4768343, -0.102942646)
+transform = Transform3D(1.0345929, 0, 1.7484555e-07, 0, 1, 0, -1.8089396e-07, 0, 1, -1.7999064e-08, 0.4768343, -0.102942646)
 mesh = SubResource("SphereMesh_qiycr")
 
 [node name="AimingRay" type="RayCast3D" parent="." unique_id=301987804]

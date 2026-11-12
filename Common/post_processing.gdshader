@@ -5,7 +5,7 @@ global uniform vec2 resolution;
 global uniform float colour_depth;
 
 uniform sampler2D screen_texture: hint_screen_texture, filter_nearest;
-uniform float dithered_amount: hint_range(0.0, 1.0, 0.01) = 0.5;
+uniform float dithered_amount: hint_range(0.0, 1.0, 0.01) = 0.7;
 
 const mat4 bayer_matrix = (1.0 / 16.0) * mat4(
 	vec4(0.0, 8.0, 2.0, 10.0),

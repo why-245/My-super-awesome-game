@@ -1,6 +1,5 @@
 extends RayCast3D
 
-#signal OnItemPickUp(item)
 @onready var player: CharacterBody3D = $"../.."
 @export var slot_data : SlotData
 
@@ -19,10 +18,8 @@ func  _process(_delta: float) -> void:
 				for children in object.get_children():
 					if children is ItemPickUpPrompt:
 						children.make_visible()
-			
-		if Input.is_action_just_pressed("interact"):
-			print("wse")
-			if player.inventory_data.pick_up_slot_data(slot_data):
+		if Input.is_action_just_pressed("interact") and object.is_in_group("InventoryItems") == true:
+			if player.inventory_data.pick_up_slot_data(object.slot_data):
 				object.queue_free()
 			return
 			

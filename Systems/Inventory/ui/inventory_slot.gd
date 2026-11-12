@@ -1,24 +1,18 @@
 extends Button
 class_name InventorySlot
 
-#signal OnSlotSelect(SlotID)
 signal SlotClicked(index : int, button : int)
 
 const max_stack_size = 20
 
 @export var icon_slot : TextureRect
 
-var position_id : int = 0
-var inventory_slot_id = -1
-var slot_filled: bool = false
-
 @onready var item_count: Label = $TextureRect/ItemCount
 @onready var equipped_item: Panel = $EquippedItem
 
-#func _gui_input(event: InputEvent) -> void:
-#	if event is InputEventMouseButton and item_data != null:
-#		if (event.button_index == MOUSE_BUTTON_LEFT):
-#			OnSlotSelect.emit(inventory_slot_id)
+var position_id : int = 0
+var inventory_slot_id = -1
+var slot_filled: bool = false
 
 func set_slot_data(slot_data : SlotData) -> void:
 	var item_data = slot_data.item_data
@@ -28,17 +22,18 @@ func set_slot_data(slot_data : SlotData) -> void:
 		item_count.text = str(slot_data.quantity)
 		item_count.show()
 
-
 func set_id(pos: int) -> void:
 	position_id += pos
+	var offset = Vector2(50 * 1.2, 50)
+	var offset_main = Vector2(50 * 1.7, 50)
 	match position_id:
-		0: _configure(Vector2.ZERO, Vector2.ONE * 1.5, true)
-		1: _configure(Vector2(-200, -20), Vector2.ONE * 1.2, true)
-		2: _configure(Vector2(-400, -40), Vector2.ONE * 1.2, true)
-		3: _configure(Vector2(-600, -40), Vector2.ONE * 1.2, false) 
-		-1: _configure(Vector2(200, -20), Vector2.ONE * 1.2, true)
-		-2: _configure(Vector2(400, -40), Vector2.ONE * 1.2, true)
-		-3: _configure(Vector2(600, -40), Vector2.ONE * 1.2, false) 
+		0: _configure(Vector2(640, 480) - offset_main, Vector2.ONE * 1.7, true)
+		1: _configure(Vector2(440, 460) - offset, Vector2.ONE * 1.2, true)
+		2: _configure(Vector2(240, 440) - offset, Vector2.ONE * 1.2, true)
+		3: _configure(Vector2(40, 440) - offset, Vector2.ONE * 1.2, false) 
+		-1: _configure(Vector2(840, 460) - offset, Vector2.ONE * 1.2, true)
+		-2: _configure(Vector2(1040, 440) - offset, Vector2.ONE * 1.2, true)
+		-3: _configure(Vector2(1240, 440) - offset, Vector2.ONE * 1.2, false) 
 		_: _configure(position, scale, false)
 
 func _configure(new_position: Vector2, new_scale: Vector2, value : bool) -> void:

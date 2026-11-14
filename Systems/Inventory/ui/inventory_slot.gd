@@ -1,7 +1,7 @@
 extends Button
 class_name InventorySlot
 
-signal SlotClicked(index : int, button : int)
+signal SlotClicked(index : int)
 
 const max_stack_size = 20
 
@@ -27,25 +27,24 @@ func set_id(pos: int) -> void:
 	var offset = Vector2(50 * 1.2, 50)
 	var offset_main = Vector2(50 * 1.7, 50)
 	match position_id:
-		0: _configure(Vector2(640, 480) - offset_main, Vector2.ONE * 1.7, true)
-		1: _configure(Vector2(440, 460) - offset, Vector2.ONE * 1.2, true)
-		2: _configure(Vector2(240, 440) - offset, Vector2.ONE * 1.2, true)
-		3: _configure(Vector2(40, 440) - offset, Vector2.ONE * 1.2, false) 
-		-1: _configure(Vector2(840, 460) - offset, Vector2.ONE * 1.2, true)
-		-2: _configure(Vector2(1040, 440) - offset, Vector2.ONE * 1.2, true)
-		-3: _configure(Vector2(1240, 440) - offset, Vector2.ONE * 1.2, false) 
-		_: _configure(position, scale, false)
+		0: _configure(Vector2(640, 480) - offset_main, Vector2.ONE * 1.7, true, false)
+		1: _configure(Vector2(440, 460) - offset, Vector2.ONE * 1.2, true, true)
+		2: _configure(Vector2(240, 440) - offset, Vector2.ONE * 1.2, true, true)
+		3: _configure(Vector2(40, 440) - offset, Vector2.ONE * 1.2, false, true) 
+		-1: _configure(Vector2(840, 460) - offset, Vector2.ONE * 1.2, true, true)
+		-2: _configure(Vector2(1040, 440) - offset, Vector2.ONE * 1.2, true, true)
+		-3: _configure(Vector2(1240, 440) - offset, Vector2.ONE * 1.2, false, true) 
+		_: _configure(position, scale, false, true)
 
-func _configure(new_position: Vector2, new_scale: Vector2, value : bool) -> void:
+func _configure(new_position: Vector2, new_scale: Vector2, value : bool, FUCK : bool) -> void:
 	var tween: Tween = create_tween().set_parallel()
 	tween.tween_property(self, "position", new_position, 0.2)
 	tween.tween_property(self, "scale", new_scale, 0.2)
-	
 	if not value:
 		await tween.finished
-	
 	visible = value
-
+	disabled = FUCK
+	
 func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		SlotClicked.emit(get_index(), event.button_index)
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not disabled:
+		SlotClicked.emit(get_index())

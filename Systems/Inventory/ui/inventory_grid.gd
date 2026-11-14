@@ -1,9 +1,12 @@
 extends Node
 
+@onready var player: CharacterBody3D = $"../../.."
+@onready var control: Control = $".."
+
+
 @export var inventory_slot_prefab : PackedScene = preload("res://Systems/Inventory/ui/inventory_slot.tscn")
 @export var item_slot_count : int = 8
 
-var inventory_slots: Array[InventorySlot] = []
 
 func set_inventory_data(inventory_data : InventoryData) -> void:
 	add_slots_to_inventory(inventory_data)
@@ -11,18 +14,67 @@ func set_inventory_data(inventory_data : InventoryData) -> void:
 
 func add_slots_to_inventory(inventory_data : InventoryData) -> void:
 	var i : int = 0
-	for slot: InventorySlot in get_children():
-		slot.set_id(-slot.get_index())
+	var slot_ids : Array = []
+	for slot : InventorySlot in get_children():
+		slot_ids.append(slot.position_id)
 		slot.queue_free()
-
+	print(slot_ids)
 	for slot_data in inventory_data.slot_datas:
 		var slot = inventory_slot_prefab.instantiate() as InventorySlot
-		i += 1
 		add_child(slot)
-		slot.SlotClicked.connect(inventory_data.on_slot_clicked)
 		slot.inventory_slot_id = -i
-		slot.position_id = i -8
-		slot.set_id(0)
+		slot.position_id = slot_ids[i] if i < slot_ids.size() else -i
+		var offset = Vector2(50 * 1.2, 50)
+		var offset_main = Vector2(50 * 1.7, 50)
+		i += 1
 		
+		match slot.position_id:
+			
+			0: 
+				slot.position = (Vector2(640, 480) - offset_main) 
+				slot.scale = Vector2.ONE * 1.7
+				slot.visible = true
+				slot.disabled = false
+				
+			1: 
+				slot.position = (Vector2(440, 460) - offset) 
+				slot.scale = Vector2.ONE * 1.2
+				slot.visible = true
+				slot.disabled = true
+			2: 
+				slot.position = (Vector2(240, 440) - offset) 
+				slot.scale = Vector2.ONE * 1.2
+				slot.visible = true
+				slot.disabled = true
+			3: 
+				slot.position = (Vector2(40, 440) - offset) 
+				slot.scale = Vector2.ONE * 1.2
+				slot.visible = false 
+				slot.disabled = true
+				
+			-1: 
+				slot.position = (Vector2(840, 460) - offset) 
+				slot.scale = Vector2.ONE * 1.2
+				slot.visible = true
+				slot.disabled = true
+				
+			-2: 
+				slot.position = (Vector2(1040, 440) - offset) 
+				slot.scale = Vector2.ONE * 1.2
+				slot.visible = true
+				slot.disabled = true
+				
+			-3: 
+				slot.position = (Vector2(1240, 440) - offset) 
+				slot.scale = Vector2.ONE * 1.2
+				slot.visible = false 
+				slot.disabled = true
+				
+			_: 
+				slot.visible = false
+				slot.disabled = true
+		
+		slot.SlotClicked.connect(inventory_data.on_slot_clicked)
+		slot.SlotClicked.connect(control.on_inventory_interact)
 		if slot_data != null:
 			slot.set_slot_data(slot_data)

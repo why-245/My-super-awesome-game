@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://do0hh5ss78ihb"]
 
-[ext_resource type="Script" uid="uid://bw0scid6oyxsc" path="res://Systems/Inventory/control.gd" id="2_7t0ka"]
-[ext_resource type="Script" uid="uid://dsvhkpjb14hyv" path="res://Systems/Inventory/ui/inventory_grid.gd" id="2_dfe2y"]
+[ext_resource type="Script" uid="uid://d2c0j8wvhdd0r" path="res://Systems/Inventory/ui/control.gd" id="2_hycic"]
 [ext_resource type="Script" uid="uid://d2odb8ou7dmy4" path="res://Systems/Inventory/ui/inventory_ui.gd" id="2_ikyi3"]
+[ext_resource type="Script" uid="uid://c1oon7hi2kve8" path="res://Systems/Inventory/ui/inventory_grid.gd" id="3_ffydq"]
 
 [node name="InventoryUi" type="CanvasLayer" unique_id=1888918583]
 process_mode = 3
@@ -15,7 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_7t0ka")
+script = ExtResource("2_hycic")
 
 [node name="InventoryGrid" type="Control" parent="Control" unique_id=1804460894]
 layout_mode = 1
@@ -25,7 +25,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 offset_transform_rotation = 6.2831855
-script = ExtResource("2_dfe2y")
+script = ExtResource("3_ffydq")
 
 [node name="TopContainer" type="HBoxContainer" parent="Control" unique_id=560153613]
 layout_mode = 1

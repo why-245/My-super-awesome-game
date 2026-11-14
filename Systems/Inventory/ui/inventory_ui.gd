@@ -9,8 +9,10 @@ var item_position : int = 0
 func _unhandled_input(_event : InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_right") and item_position < inventory_grid.get_child_count() -1 and visible:
 		_update_inventory_position(1)
+		
 	if Input.is_action_just_pressed('ui_left') and item_position > 0 and visible:
 		_update_inventory_position(-1)
+		
 
 func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("inventory"):
@@ -23,6 +25,7 @@ func _process(_delta: float) -> void:
 
 func _update_inventory_position(value: int) -> void:
 	item_position += value
+	
 	for inv_slot: InventorySlot in inventory_grid.get_children():
 		inv_slot.set_id(value)
 
@@ -33,6 +36,7 @@ func reset_inventory_position():
 
 func open_inventory():
 	visible = true
+
 func close_inventory():
 	visible = false
 	reset_inventory_position()

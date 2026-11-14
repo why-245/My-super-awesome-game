@@ -11,7 +11,6 @@ func can_merge_with(item_pick_up : SlotData) -> bool:
 	
 func merge_with(item_pick_up : SlotData) -> void:
 	quantity = quantity + item_pick_up.quantity
-	
 
 func set_quantity(value : int) -> void:
 	quantity = value

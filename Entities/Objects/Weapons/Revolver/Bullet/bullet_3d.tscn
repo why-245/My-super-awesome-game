@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ixdlk8ao65y4"]
+
+[ext_resource type="Script" uid="uid://cp41sykwg8csc" path="res://Entities/Objects/Weapons/Revolver/Bullet/bullet_3d.gd" id="1_y2jmw"]
+[ext_resource type="Shader" uid="uid://b4l4hv74cw7he" path="res://Common/object_shader.gdshader" id="2_pbwp8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ih8wk"]
+render_priority = 0
+shader = ExtResource("2_pbwp8")
+shader_parameter/vertex_wobble = 1.0
+shader_parameter/affine_mapping = 0.2
+
+[sub_resource type="SphereMesh" id="SphereMesh_jp0yl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p70al"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="Bullet3d" type="Area3D" unique_id=63263989]
+top_level = true
+collision_layer = 3
+script = ExtResource("1_y2jmw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=531582529]
+transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_ih8wk")
+mesh = SubResource("SphereMesh_jp0yl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1832238017]
+shape = SubResource("BoxShape3D_p70al")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,7 +1,7 @@
 extends CanvasLayer
 class_name InventoryUI
 
-@onready var inventory_grid: Control = $Control/InventoryGrid
+@onready var inventory_grid: Control = $InventoryController/InventoryGrid
 
 var equipped_slot : int = -1
 var item_position : int = 0
@@ -12,7 +12,6 @@ func _unhandled_input(_event : InputEvent) -> void:
 		
 	if Input.is_action_just_pressed('ui_left') and item_position > 0 and visible:
 		_update_inventory_position(-1)
-		
 
 func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("inventory"):
@@ -25,7 +24,6 @@ func _process(_delta: float) -> void:
 
 func _update_inventory_position(value: int) -> void:
 	item_position += value
-	
 	for inv_slot: InventorySlot in inventory_grid.get_children():
 		inv_slot.set_id(value)
 

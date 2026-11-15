@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://do0hh5ss78ihb"]
 
-[ext_resource type="Script" uid="uid://d2c0j8wvhdd0r" path="res://Systems/Inventory/ui/control.gd" id="2_hycic"]
+[ext_resource type="Script" uid="uid://d2c0j8wvhdd0r" path="res://Systems/Inventory/ui/inventory_controller.gd" id="2_hycic"]
 [ext_resource type="Script" uid="uid://d2odb8ou7dmy4" path="res://Systems/Inventory/ui/inventory_ui.gd" id="2_ikyi3"]
 [ext_resource type="Script" uid="uid://c1oon7hi2kve8" path="res://Systems/Inventory/ui/inventory_grid.gd" id="3_ffydq"]
 
@@ -8,7 +8,7 @@
 process_mode = 3
 script = ExtResource("2_ikyi3")
 
-[node name="Control" type="Control" parent="." unique_id=1705673188]
+[node name="InventoryController" type="Control" parent="." unique_id=1705673188]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,7 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_hycic")
 
-[node name="InventoryGrid" type="Control" parent="Control" unique_id=1804460894]
+[node name="InventoryGrid" type="Control" parent="InventoryController" unique_id=1804460894]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,18 +27,18 @@ grow_vertical = 2
 offset_transform_rotation = 6.2831855
 script = ExtResource("3_ffydq")
 
-[node name="TopContainer" type="HBoxContainer" parent="Control" unique_id=560153613]
+[node name="TopContainer" type="HBoxContainer" parent="InventoryController" unique_id=560153613]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 99.0
 grow_horizontal = 2
 
-[node name="Panel" type="Panel" parent="Control/TopContainer" unique_id=615248528]
+[node name="Panel" type="Panel" parent="InventoryController/TopContainer" unique_id=615248528]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Control/TopContainer/Panel" unique_id=758358771]
+[node name="Label" type="Label" parent="InventoryController/TopContainer/Panel" unique_id=758358771]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -53,7 +53,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "PLACEHOLDER MENU"
 
-[node name="BottomContainer" type="HBoxContainer" parent="Control" unique_id=1202989546]
+[node name="BottomContainer" type="HBoxContainer" parent="InventoryController" unique_id=1202989546]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -63,11 +63,11 @@ offset_top = -97.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Panel" type="Panel" parent="Control/BottomContainer" unique_id=1059257586]
+[node name="Panel" type="Panel" parent="InventoryController/BottomContainer" unique_id=1059257586]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Control/BottomContainer/Panel" unique_id=16166414]
+[node name="Label" type="Label" parent="InventoryController/BottomContainer/Panel" unique_id=16166414]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

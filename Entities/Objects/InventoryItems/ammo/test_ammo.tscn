@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bxepmu5j6ynnk"]
+
+[ext_resource type="Script" uid="uid://dc3o5o206i0g3" path="res://Entities/Objects/InventoryItems/ammo/test_ammo.gd" id="1_eg0bk"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_jp0yl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5a1so"]
+size = Vector3(1, 2.7802734, 1)
+
+[node name="TestAmmo" type="StaticBody3D" unique_id=200302801]
+script = ExtResource("1_eg0bk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1002284830]
+mesh = SubResource("PrismMesh_jp0yl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=490484130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8901367, 0)
+shape = SubResource("BoxShape3D_5a1so")

@@ -1,5 +1,5 @@
 extends Resource
 class_name ActionData
 
-enum ACTIONTYPE {INVALID,TEST_1, EQUIPPAPLE,}
+enum ACTIONTYPE {INVALID,TEST_1, EQUIPPAPLE, AMMO}
 var action_type : ACTIONTYPE

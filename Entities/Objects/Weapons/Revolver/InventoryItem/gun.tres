@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="SlotData" format=3 uid="uid://cnqrio77yfnj"]
+
+[ext_resource type="Script" uid="uid://be1brop5ihcb7" path="res://Systems/Inventory/Actions/equippable_action.gd" id="1_2ll1e"]
+[ext_resource type="Texture2D" uid="uid://vgv0fed2fvfs" path="res://missing_textures.1-1785952419.png" id="2_2ll1e"]
+[ext_resource type="PackedScene" uid="uid://bg4nd8vtqtr8g" path="res://Entities/Objects/Weapons/Revolver/EquippableItem/test_gun_inventory.tscn" id="3_gl8jb"]
+[ext_resource type="Script" uid="uid://bq5oou3a1atok" path="res://Systems/Inventory/item_data.gd" id="4_7x168"]
+[ext_resource type="Script" uid="uid://bwogat4tpt8fd" path="res://Systems/Inventory/slot_data.gd" id="5_ip8jm"]
+
+[sub_resource type="Resource" id="Resource_5lmw6"]
+script = ExtResource("1_2ll1e")
+metadata/_custom_type_script = "uid://be1brop5ihcb7"
+
+[sub_resource type="Resource" id="Resource_nxhrf"]
+script = ExtResource("4_7x168")
+item_name = "gun"
+item_description = "s"
+stackable = true
+icon = ExtResource("2_2ll1e")
+action_data = SubResource("Resource_5lmw6")
+action_type = 2
+item_prefab = ExtResource("3_gl8jb")
+metadata/_custom_type_script = "uid://bq5oou3a1atok"
+
+[resource]
+script = ExtResource("5_ip8jm")
+item_data = SubResource("Resource_nxhrf")
+metadata/_custom_type_script = "uid://bwogat4tpt8fd"

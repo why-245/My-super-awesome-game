@@ -43,14 +43,9 @@ mesh = SubResource("BoxMesh_71ew1")
 
 [node name="Label3D" parent="." unique_id=1975442167 instance=ExtResource("2_8t5nf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9554722, 0)
-billboard = 1
 text = "Press \"F\" to  pick up item
 "
 
-[node name="Area3D" type="Area3D" parent="." unique_id=1289069368]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=642734870]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=642734870]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.385498, 0)
 shape = SubResource("BoxShape3D_5a1so")
-
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

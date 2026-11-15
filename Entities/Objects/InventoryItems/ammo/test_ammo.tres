@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="SlotData" format=3 uid="uid://btywpdx0qkunn"]
+
+[ext_resource type="Texture2D" uid="uid://mrbl5v4nsw2g" path="res://icon.svg" id="1_bi0m5"]
+[ext_resource type="Script" uid="uid://b6koq82wl2u46" path="res://Systems/Inventory/Actions/ammo.gd" id="1_cddr1"]
+[ext_resource type="Script" uid="uid://bwogat4tpt8fd" path="res://Systems/Inventory/slot_data.gd" id="1_u7v5q"]
+[ext_resource type="Script" uid="uid://bq5oou3a1atok" path="res://Systems/Inventory/item_data.gd" id="2_cddr1"]
+
+[sub_resource type="Resource" id="Resource_w06wa"]
+script = ExtResource("1_cddr1")
+metadata/_custom_type_script = "uid://b6koq82wl2u46"
+
+[sub_resource type="Resource" id="Resource_waes5"]
+script = ExtResource("2_cddr1")
+item_name = "test_ammo"
+stackable = true
+icon = ExtResource("1_bi0m5")
+action_data = SubResource("Resource_w06wa")
+action_type = 3
+metadata/_custom_type_script = "uid://bq5oou3a1atok"
+
+[resource]
+script = ExtResource("1_u7v5q")
+item_data = SubResource("Resource_waes5")
+metadata/_custom_type_script = "uid://bwogat4tpt8fd"

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bp3scjjaou7ky"]
+
+[ext_resource type="Script" uid="uid://5ufn01jqdf4" path="res://Entities/Objects/Weapons/Revolver/InventoryItem/gun.gd" id="1_rn6i7"]
+[ext_resource type="Resource" uid="uid://cnqrio77yfnj" path="res://Entities/Objects/Weapons/Revolver/InventoryItem/gun.tres" id="2_efccy"]
+[ext_resource type="PackedScene" uid="uid://bagi4twhdpqxb" path="res://Entities/Objects/label_3d.tscn" id="3_jalg8"]
+[ext_resource type="Shader" uid="uid://b4l4hv74cw7he" path="res://Common/object_shader.gdshader" id="4_n5372"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jp0yl"]
+size = Vector3(1, 2.779419, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ikykf"]
+render_priority = 0
+shader = ExtResource("4_n5372")
+shader_parameter/vertex_wobble = 1.0
+shader_parameter/affine_mapping = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_jp0yl"]
+material = SubResource("ShaderMaterial_ikykf")
+
+[node name="TestGun" type="StaticBody3D" unique_id=1328323266 groups=["InventoryItems"]]
+collision_layer = 3
+script = ExtResource("1_rn6i7")
+slot_data = ExtResource("2_efccy")
+
+[node name="Label3D" parent="." unique_id=1975442167 instance=ExtResource("3_jalg8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=785389755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8897095, 0)
+shape = SubResource("BoxShape3D_jp0yl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=859962570]
+mesh = SubResource("BoxMesh_jp0yl")

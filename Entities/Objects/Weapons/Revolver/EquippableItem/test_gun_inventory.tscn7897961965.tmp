@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bg4nd8vtqtr8g"]
+
+[ext_resource type="Script" uid="uid://cprmv20g8ta7" path="res://Entities/Objects/Weapons/Revolver/EquippableItem/test_gun_inventory.gd" id="1_0qbyt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jp0yl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5a1so"]
+
+[node name="TestGun" type="StaticBody3D" unique_id=1328323266 groups=["InventoryItems"]]
+collision_layer = 0
+script = ExtResource("1_0qbyt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=859962570]
+mesh = SubResource("BoxMesh_jp0yl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=904288710]
+shape = SubResource("BoxShape3D_5a1so")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=1177018737]
+transform = Transform3D(-1.4, 0, -8.742278e-08, 0, 1, 0, 1.2239188e-07, 0, -1, 0.6079988, 0, 0)

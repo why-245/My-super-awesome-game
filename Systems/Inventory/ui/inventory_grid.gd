@@ -18,7 +18,7 @@ func add_slots_to_inventory(inventory_data : InventoryData) -> void:
 	for slot : InventorySlot in get_children():
 		slot_ids.append(slot.position_id)
 		slot.queue_free()
-	print(slot_ids)
+		
 	for slot_data in inventory_data.slot_datas:
 		var slot = inventory_slot_prefab.instantiate() as InventorySlot
 		add_child(slot)

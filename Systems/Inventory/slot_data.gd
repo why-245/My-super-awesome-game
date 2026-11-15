@@ -8,7 +8,7 @@ const max_stack_size = 20
 func can_merge_with(item_pick_up : SlotData) -> bool:
 	return item_data == item_pick_up.item_data and item_data.stackable \
 	and quantity + item_pick_up.quantity < max_stack_size
-	
+
 func merge_with(item_pick_up : SlotData) -> void:
 	quantity = quantity + item_pick_up.quantity
 

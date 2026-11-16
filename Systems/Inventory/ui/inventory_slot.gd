@@ -48,3 +48,4 @@ func _configure(new_position: Vector2, new_scale: Vector2, value : bool, FUCK : 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not disabled:
 		SlotClicked.emit(get_index())
+		

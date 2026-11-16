@@ -7,7 +7,6 @@
 [ext_resource type="Shader" uid="uid://b4l4hv74cw7he" path="res://Common/object_shader.gdshader" id="3_x1y6q"]
 [ext_resource type="PackedScene" uid="uid://do0hh5ss78ihb" path="res://Systems/Inventory/ui/inventory.tscn" id="6_4wf4l"]
 [ext_resource type="Texture2D" uid="uid://mrbl5v4nsw2g" path="res://icon.svg" id="8_7a1se"]
-[ext_resource type="Script" uid="uid://clao4ce7hxqln" path="res://Systems/Combat/aim_ray.gd" id="11_ap3xn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5a1so"]
 render_priority = -1
@@ -41,7 +40,7 @@ material = SubResource("ShaderMaterial_lub02")
 
 [node name="Player" type="CharacterBody3D" unique_id=779760721 node_paths=PackedStringArray("aim_ray")]
 script = ExtResource("1_l8h54")
-aim_ray = NodePath("AimingRay")
+aim_ray = NodePath("Body/AimingRay")
 inventory_data = ExtResource("2_7a1se")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1221979310]
@@ -60,12 +59,6 @@ mesh = SubResource("QuadMesh_jp0yl")
 [node name="InventoryUi" parent="." unique_id=1888918583 instance=ExtResource("6_4wf4l")]
 visible = false
 
-[node name="AimingRay" type="RayCast3D" parent="." unique_id=301987804]
-transform = Transform3D(1.8522778, 0, 0, 0, -4.3428807e-07, -0.99999976, 0, 9.935353, -4.3711378e-08, 0, 1.3565662, -0.46919215)
-collision_mask = 3
-collide_with_areas = true
-script = ExtResource("11_ap3xn")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=68562120]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_5a1so")
@@ -78,10 +71,14 @@ mesh = SubResource("CapsuleMesh_jp0yl")
 [node name="InteractionRay" type="RayCast3D" parent="Body" unique_id=1062597944]
 unique_name_in_owner = true
 transform = Transform3D(127.758835, 7.988308e-07, -7.642741e-15, 0, -1.997077e-07, -0.9999999, -2.2338065e-05, 4.5687795, -4.3711385e-08, 6.775822e-08, 0.17894185, 0.38753188)
-visible = false
 collision_mask = 3
 hit_back_faces = false
 script = ExtResource("2_lu8i8")
+
+[node name="AimingRay" type="RayCast3D" parent="Body" unique_id=301987804]
+transform = Transform3D(1.8522778, 1.7371524e-06, -7.64274e-15, 0, -4.3428807e-07, -0.99999976, -3.2386254e-07, 9.935353, -4.3711378e-08, -8.203616e-08, 0.3565662, -0.46919215)
+collision_mask = 3
+collide_with_areas = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body" unique_id=456646297]
 transform = Transform3D(1.0345929, 0, 1.7484555e-07, 0, 1, 0, -1.8089396e-07, 0, 1, -1.7999064e-08, 0.4768343, -0.102942646)

@@ -8,13 +8,12 @@ signal inventory_interact(inventory_data : InventoryData, index : int, button : 
 func on_slot_clicked(index : int) -> void:
 	inventory_interact.emit(self, index)
 
-func use_slot_data(index : int) -> void:
+func use_slot_data(index : int, amount : int) -> void:
 	var slot_data : SlotData = slot_datas[index]
-	slot_data.quantity -= 1
+	slot_data.quantity -= amount
 	
 	if slot_data.quantity <= 0:
 		slot_datas[index] = null
-	
 	inventory_updated.emit(self)
 
 func pick_up_slot_data(slot_data : SlotData) -> bool:
@@ -30,3 +29,17 @@ func pick_up_slot_data(slot_data : SlotData) -> bool:
 			inventory_updated.emit(self)
 			return true
 	return false
+
+func get_slot_index(item : String):
+	var index = 0
+	for slot_data : SlotData in slot_datas:
+		if slot_data and slot_data.item_data.item_name == item:
+			return index
+		index += 1
+	return index
+
+func get_item_count(item : String) -> int:
+	for slot_data : SlotData in slot_datas:
+		if slot_data and slot_data.item_data.item_name == item:
+			return slot_data.quantity
+	return 0

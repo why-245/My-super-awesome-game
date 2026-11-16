@@ -48,7 +48,7 @@ func _on_context_menu_select(index : int) -> void:
 		ActionData.ACTIONTYPE.TEST_1:
 			match index:
 				0: print("TEST")
-				1: inventory_data.use_slot_data(slot_id)
+				1: inventory_data.use_slot_data(slot_id, 1)
 		ActionData.ACTIONTYPE.EQUIPPAPLE:
 			match index:
 				0: equipp_slot_data(slot_id)
@@ -79,17 +79,5 @@ func equipp_slot_data(index : int) -> void:
 	var instance = slot_data.item_data.item_prefab.instantiate() as Node3D
 	on_item_equip(instance)
 
-func get_item_count(item : String) -> int:
-	for slot_data : SlotData in slot_datas:
-		if slot_data.item_data.item_name == item:
-			return slot_data.quantity
-	return 0
 
-func get_slot_index(item : String) -> int:
-	var index = 0
-	for slot_data : SlotData in slot_datas:
-		if slot_data.item_data.item_name == item:
-			index += 1
-			return index
-	return index
  

@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 @export_group("Combat Settings")
 @export var aim_ray : AimingRay
@@ -36,13 +37,7 @@ func _physics_process(delta: float) -> void:
 		current_speed = SPEED
 
 func _process(_delta: float) -> void:
-	pass
-	var enemy = aim_ray.find_closest_enemy()
-	if enemy == null:
-		return
-	
-	var enemy_position = Vector3(enemy.global_position.x, self.global_position.y, enemy.global_position.z)
-	look_at(enemy_position)
+	return
 
 func look_at_mouse():
 	var plane_mouse = Plane(Vector3(0,1,0 ), position.y)
@@ -52,9 +47,13 @@ func look_at_mouse():
 	var to = from + %Camera3D.project_ray_normal(mouse_position) * ray_length
 	var mouse_position_on_screen = plane_mouse.intersects_ray(from, to)
 	
-	%Body.look_at(mouse_position_on_screen, Vector3.UP, 0)
-	%Body.rotation.x = 0
-
-#func _unhandled_input(_event: InputEvent) -> void:
-	#if Input.is_action_just_pressed("aim"):
-		#auto_aim()
+	var enemy = $Body/AimingRay.get_collider()
+	
+	if enemy and enemy.is_in_group("AimTargets"):
+		var rotation_vector = Basis.looking_at(enemy.position, Vector3.UP).get_euler()
+		%Body.rotation = rotation_vector
+		%Body.rotation.x = 0
+		print("FDASF")
+	else:
+		%Body.look_at(mouse_position_on_screen, Vector3.UP, 0)
+		%Body.rotation.x = 0

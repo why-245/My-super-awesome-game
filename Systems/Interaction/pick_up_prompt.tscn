@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://ddsxgevojs1ro"]
+
+[ext_resource type="Script" uid="uid://p08rpprderws" path="res://Systems/Interaction/pick_up_prompt.gd" id="1_fvbxu"]
+
+[node name="PickUpPrompt" type="Control" unique_id=481478896]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fvbxu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1114576001]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1592951050]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14639173, 0.14639173, 0.14639173, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ColorRect" unique_id=713395477]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 83.0
+offset_right = 100.0
+offset_bottom = 283.0
+grow_horizontal = 2
+expand_mode = 1
+
+[node name="TextEdit" type="RichTextLabel" parent="CanvasLayer/ColorRect" unique_id=2056644508]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -217.0
+offset_right = 100.0
+offset_bottom = -177.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_stretch_ratio = 0.0
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="YButton" type="Button" parent="CanvasLayer/ColorRect" unique_id=1086005309]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = 108.0
+offset_right = -25.0
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "YES"
+
+[node name="NButton" type="Button" parent="CanvasLayer/ColorRect" unique_id=1508429781]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = 108.0
+offset_right = 225.0
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "NO"
+
+[connection signal="pressed" from="CanvasLayer/ColorRect/YButton" to="." method="_on_y_button_pressed"]
+[connection signal="button_down" from="CanvasLayer/ColorRect/NButton" to="." method="_on_n_button_button_down"]

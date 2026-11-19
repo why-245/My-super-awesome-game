@@ -1,8 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
-@export_group("Combat Settings")
-@export var aim_ray : AimingRay
+@export var aiming_ray : AimingRay
 @export var inventory_data : InventoryData
 
 var  SPEED = 5.0
@@ -29,31 +28,23 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	if Input.is_action_pressed("aim"):
-		look_at_mouse()
+		look_at_aiming_ray()
 	
 	if Input.is_action_pressed("sprint"):
 		current_speed = sprint_speed
 	else:
 		current_speed = SPEED
 
-func _process(_delta: float) -> void:
-	return
+func auto_aim():
+	var target = aiming_ray.find_closest_target()
+	if target == null:
+		return
+		
+	var target_position = Vector3(target.global_position.x, self.global_position.y, target.global_position.z)
+	aiming_ray.look_at(target_position)
+	aiming_ray.rotation.x = 90
 
-func look_at_mouse():
-	var plane_mouse = Plane(Vector3(0,1,0 ), position.y)
-	var ray_length = 1000
-	var mouse_position = get_viewport().get_mouse_position()
-	var from = %Camera3D.project_ray_origin(mouse_position)
-	var to = from + %Camera3D.project_ray_normal(mouse_position) * ray_length
-	var mouse_position_on_screen = plane_mouse.intersects_ray(from, to)
+func look_at_aiming_ray():
 	
-	var enemy = $Body/AimingRay.get_collider()
-	
-	if enemy and enemy.is_in_group("AimTargets"):
-		var rotation_vector = Basis.looking_at(enemy.position, Vector3.UP).get_euler()
-		%Body.rotation = rotation_vector
-		%Body.rotation.x = 0
-		print("FDASF")
-	else:
-		%Body.look_at(mouse_position_on_screen, Vector3.UP, 0)
-		%Body.rotation.x = 0
+	%Body.look_at(aiming_ray.get_child(0).global_position)
+	%Body.rotation.x = 0

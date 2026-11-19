@@ -47,7 +47,7 @@ func _on_context_menu_select(index : int) -> void:
 	match _get_item_action_type(slot_data.item_data):
 		ActionData.ACTIONTYPE.TEST_1:
 			match index:
-				0: print("TEST")
+				0: print(slot_id)
 				1: inventory_data.use_slot_data(slot_id, 1)
 		ActionData.ACTIONTYPE.EQUIPPAPLE:
 			match index:

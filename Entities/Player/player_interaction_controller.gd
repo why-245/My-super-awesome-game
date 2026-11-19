@@ -18,9 +18,11 @@ func  _process(_delta: float) -> void:
 				for children in object.get_children():
 					if children is ItemPickUpPrompt:
 						children.make_visible()
-		if Input.is_action_just_pressed("interact") and object.is_in_group("InventoryItems") == true:
-			if player.inventory_data.pick_up_slot_data(object.slot_data):
-				object.queue_free()
+		if Input.is_action_just_pressed("interact"):
+			if object.is_in_group("InventoryItems") == true and object.slot_data:
+				player.get_node("PickUpPrompt").on_item_pick_up(object.slot_data, object)
+			if object.is_in_group("Interactables") and object.has_node("InteractionComponent"):
+				object.get_node("InteractionComponent").interacted_with(player.inventory_data)
 			return
 			
 	else:

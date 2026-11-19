@@ -1,18 +1,27 @@
 [gd_scene format=3 uid="uid://bo687mdoqyi4"]
 
+[ext_resource type="Script" uid="uid://utiee4d75haf" path="res://Entities/Enemies/test_enemy.gd" id="1_anj6l"]
+[ext_resource type="PackedScene" uid="uid://bwgjjywgtjdc4" path="res://Systems/Combat/aim_target.tscn" id="1_j65qv"]
+[ext_resource type="PackedScene" uid="uid://dxr1jktnkdhya" path="res://Systems/Combat/health_component.tscn" id="2_5005p"]
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jp0yl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jp0yl"]
 
-[node name="TestEnemy" type="AnimatableBody3D" unique_id=1226870746 groups=["AimTargets"]]
+[node name="TestEnemy" type="AnimatableBody3D" unique_id=1226870746]
+script = ExtResource("1_anj6l")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1224323139]
 mesh = SubResource("CapsuleMesh_jp0yl")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=925356366 groups=["aim_targets"]]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=925356366]
 shape = SubResource("CapsuleShape3D_jp0yl")
 
-[node name="Label3D" type="Label3D" parent="." unique_id=1410903694]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2391987, 0)
-billboard = 1
-text = "Unfinished combat stuff"
+[node name="AimTarget" parent="." unique_id=605460931 node_paths=PackedStringArray("health_component") instance=ExtResource("1_j65qv")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HealthComponent" parent="." unique_id=1755143760 instance=ExtResource("2_5005p")]
+max_health = 100.0
+
+[connection signal="damage_taken" from="HealthComponent" to="AimTarget" method="_on_health_component_damage_taken"]
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

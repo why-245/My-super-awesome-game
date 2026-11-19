@@ -4,7 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://mrbl5v4nsw2g" path="res://icon.svg" id="1_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://b3uyeslqdc5pc" path="res://Entities/Objects/InventoryItems/test_object3D.tscn" id="3_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://bo687mdoqyi4" path="res://Entities/Enemies/test_enemy.tscn" id="4_gjpho"]
+[ext_resource type="Script" uid="uid://dnjoorfqaw8cf" path="res://Systems/Inventory/Actions/test_action.gd" id="4_uo7di"]
+[ext_resource type="Script" uid="uid://bq5oou3a1atok" path="res://Systems/Inventory/item_data.gd" id="5_kn06e"]
 [ext_resource type="PackedScene" uid="uid://bp3scjjaou7ky" path="res://Entities/Objects/Weapons/Revolver/InventoryItem/test_gun.tscn" id="5_p70al"]
+[ext_resource type="Script" uid="uid://bwogat4tpt8fd" path="res://Systems/Inventory/slot_data.gd" id="6_7yo87"]
+[ext_resource type="PackedScene" uid="uid://dncj2m1k0qelj" path="res://Entities/Objects/Interactables/test_interact.tscn" id="6_45d1s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o3h3i"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -27,6 +31,29 @@ size = Vector2(20, 20)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ex4vr"]
 
+[sub_resource type="Resource" id="Resource_ti1bm"]
+script = ExtResource("4_uo7di")
+metadata/_custom_type_script = "uid://dnjoorfqaw8cf"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_op4cu"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.s3tc.ctex"
+
+[sub_resource type="Resource" id="Resource_8l3nt"]
+script = ExtResource("5_kn06e")
+item_name = "TestObject"
+item_description = "A very cool looking object"
+stackable = true
+icon = SubResource("CompressedTexture2D_op4cu")
+action_data = SubResource("Resource_ti1bm")
+action_type = 1
+metadata/_custom_type_script = "uid://bq5oou3a1atok"
+
+[sub_resource type="Resource" id="Resource_kwl8l"]
+script = ExtResource("6_7yo87")
+item_data = SubResource("Resource_8l3nt")
+quantity = 7
+metadata/_custom_type_script = "uid://bwogat4tpt8fd"
+
 [node name="World" type="Node3D" unique_id=1918096829]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=738782384]
@@ -44,21 +71,21 @@ mesh = SubResource("PlaneMesh_f1bq1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=261251089]
 shape = SubResource("WorldBoundaryShape3D_ex4vr")
 
-[node name="Player" parent="." unique_id=779760721 instance=ExtResource("1_5a7ea")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.440145, 0, 0)
-
-[node name="TestEnemy" parent="." unique_id=1226870746 groups=["aim_targets"] instance=ExtResource("4_gjpho")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 5)
+[node name="TestEnemy" parent="." unique_id=1226870746 instance=ExtResource("4_gjpho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1833363, 1, 6.2491446)
 
 [node name="StaticBody3D" parent="." unique_id=62076919 instance=ExtResource("3_5a7ea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0509458, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4632645, 0, 0)
 
 [node name="StaticBody3D2" parent="." unique_id=1206488481 instance=ExtResource("3_5a7ea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7856007, 0, -2.7542024)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6606736, 0, -2.7542024)
+slot_data = SubResource("Resource_kwl8l")
 
 [node name="Area3D" parent="." unique_id=2121566427 instance=ExtResource("5_p70al")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9107754, 0.5, -2.5579705)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8728287, 0.5, -2.5579705)
 
-[editable path="Player"]
-[editable path="Player/InventoryUi"]
+[node name="Player" parent="." unique_id=779760721 instance=ExtResource("1_5a7ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.46323657)
+
+[node name="TestInteract" parent="." unique_id=156282646 instance=ExtResource("6_45d1s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8661013, 1, -4.308812)

@@ -12,7 +12,7 @@ metadata/_custom_type_script = "uid://be1brop5ihcb7"
 
 [sub_resource type="Resource" id="Resource_nxhrf"]
 script = ExtResource("4_7x168")
-item_name = "gun"
+item_name = "TestGun"
 item_description = "s"
 stackable = true
 icon = ExtResource("2_2ll1e")

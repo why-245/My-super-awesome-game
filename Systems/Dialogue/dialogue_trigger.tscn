@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c7u4wfjmtjda8"]
+
+[ext_resource type="Script" uid="uid://ddbayeqpw2sob" path="res://Systems/Dialogue/dialogue_trigger.gd" id="1_6n1wk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5a1so"]
+
+[node name="DialogueTrigger" type="Node3D" unique_id=714755734]
+script = ExtResource("1_6n1wk")
+
+[node name="Trigger" type="Area3D" parent="." unique_id=769963794]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trigger" unique_id=675661504]
+shape = SubResource("CapsuleShape3D_5a1so")

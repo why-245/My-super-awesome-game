@@ -8,12 +8,12 @@ signal inventory_interact(inventory_data : InventoryData, index : int, button : 
 func on_slot_clicked(index : int) -> void:
 	inventory_interact.emit(self, index)
 
-func use_slot_data(index : int, amount : int) -> void:
-	var slot_data : SlotData = slot_datas[index]
+func use_slot_data(slot_id : int, amount : int) -> void:
+	var slot_data : SlotData = slot_datas[slot_id]
+	print(slot_data)
 	slot_data.quantity -= amount
-	
 	if slot_data.quantity <= 0:
-		slot_datas[index] = null
+		slot_datas[slot_id] = null
 	inventory_updated.emit(self)
 
 func pick_up_slot_data(slot_data : SlotData) -> bool:

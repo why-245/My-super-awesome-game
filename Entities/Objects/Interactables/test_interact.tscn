@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dncj2m1k0qelj"]
+
+[ext_resource type="Script" uid="uid://w3xfcma58lia" path="res://Systems/Interaction/interaction_component.gd" id="1_04ofg"]
+[ext_resource type="Script" uid="uid://dcpll0arxrv05" path="res://Entities/Objects/Interactables/test_interact.gd" id="1_6xup1"]
+[ext_resource type="Shader" uid="uid://b4l4hv74cw7he" path="res://Common/object_shader.gdshader" id="2_km5h5"]
+[ext_resource type="PackedScene" uid="uid://bagi4twhdpqxb" path="res://Entities/Objects/label_3d.tscn" id="2_pb133"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_td28s"]
+render_priority = 0
+shader = ExtResource("2_km5h5")
+shader_parameter/vertex_wobble = 1.0
+shader_parameter/affine_mapping = 0.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qiycr"]
+material = SubResource("ShaderMaterial_td28s")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gwuso"]
+size = Vector3(1, 2, 1)
+
+[node name="TestInteract" type="StaticBody3D" unique_id=156282646 groups=["Interactables"]]
+script = ExtResource("1_6xup1")
+
+[node name="InteractionComponent" type="Node" parent="." unique_id=705658643]
+script = ExtResource("1_04ofg")
+key = "TestObject"
+metadata/_custom_type_script = "uid://w3xfcma58lia"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1331455199]
+mesh = SubResource("CylinderMesh_qiycr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1904124737]
+shape = SubResource("BoxShape3D_gwuso")
+
+[node name="Label3D" parent="." unique_id=1975442167 instance=ExtResource("2_pb133")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1355083, 0)
+
+[connection signal="interacted" from="InteractionComponent" to="." method="_on_interaction_component_interacted"]

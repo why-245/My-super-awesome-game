@@ -9,10 +9,3 @@ func _process(delta: float) -> void:
 	travelled_distance += speed * delta
 	if travelled_distance > RANGE:
 		queue_free()
-
-func _on_body_entered(body: Node3D) -> void:
-	queue_free()
-	if body.has_method("take_damage"):
-		body.take_damage()
-
-	

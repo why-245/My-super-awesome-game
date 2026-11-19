@@ -3,10 +3,8 @@ extends Node
 @onready var player: CharacterBody3D = $"../../.."
 @onready var control: Control = $".."
 
-
 @export var inventory_slot_prefab : PackedScene = preload("res://Systems/Inventory/ui/inventory_slot.tscn")
 @export var item_slot_count : int = 8
-
 
 func set_inventory_data(inventory_data : InventoryData) -> void:
 	add_slots_to_inventory(inventory_data)

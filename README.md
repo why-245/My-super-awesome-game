@@ -61,6 +61,8 @@ LMB: Shoot
 
 "F": Interact
 
+"R" : Reload (must have gun equipped)
+
 	"I": Inventory
 
 		"A D" "Left arrow key, Right arrow key": Navigate Inventory menu

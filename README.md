@@ -31,8 +31,8 @@ v.0.3.0
 v.0.4.0
 -Bug fix, The game no longer crashes when you interact with non inventory objects, Inventory is now correctly centered
 -Inventory rework, the inventory is now separated in to two elements, a resource element that handles all the logic and a ui element.
--A equip function has been added for certain items (that actually equips a item)
--A use function has been added for certain items (that consumes a item upon use from the inventory)
+-A "EQUIP" function has been added for certain items (that actually equips a item)
+-A "USE" function has been added for certain items (that consumes a item upon use from the inventory)
 -Reload function and ammo system for the place holder gun
 -(UNFINISHED) work on a target lock / auto aim feature 
 

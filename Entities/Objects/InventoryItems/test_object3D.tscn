@@ -13,9 +13,6 @@ item_data = ExtResource("2_71ew1")
 quantity = 7
 metadata/_custom_type_script = "uid://bwogat4tpt8fd"
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jp0yl"]
-size = Vector3(1, 2.3399658, 1)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_01df6"]
 render_priority = 0
 shader = ExtResource("2_01df6")
@@ -33,10 +30,6 @@ size = Vector3(1, 3.770996, 1)
 [node name="StaticBody3D" type="StaticBody3D" unique_id=62076919 groups=["InventoryItems"]]
 script = ExtResource("1_8t5nf")
 slot_data = SubResource("Resource_a2l3m")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=53716010]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6699829, 0)
-shape = SubResource("BoxShape3D_jp0yl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=240788387]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91415405, 0)

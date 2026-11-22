@@ -33,6 +33,7 @@ AimTargets=""
 Interactables=""
 DialogueCharecters=""
 DialogueObject=""
+PuzzleObject=""
 
 [input]
 

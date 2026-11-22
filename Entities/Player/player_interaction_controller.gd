@@ -22,10 +22,12 @@ func  _process(_delta: float) -> void:
 			if object.is_in_group("InventoryItems") == true and object.slot_data:
 				player.get_node("PickUpPrompt").on_item_pick_up(object.slot_data, object)
 				
-			if object.is_in_group("Interactables") and object.has_node("InteractionComponent"):
+			if object.is_in_group("DialogueObject"):
 				player.get_node("DialogueUi").start_dialogue(object.get_node("DialogueTrigger"), object)
-			return
-			
+				
+			if object.is_in_group("PuzzleObject"):
+				get_tree().change_scene_to_file("res://Entities/Interactables/PuzzleObject/TestPuzzleObject/test_puzzle_scene.tscn")
+
 	else:
 		if current_object:
 			for children in current_object.get_children():

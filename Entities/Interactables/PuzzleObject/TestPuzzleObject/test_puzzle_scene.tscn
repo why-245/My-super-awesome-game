@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://d04mcn1vjpx8h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jp0yl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5a1so"]
+
+[node name="TestPuzzleScene" type="Node3D" unique_id=543975042]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1800488674]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5526792, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=537488840]
+shape = SubResource("BoxShape3D_jp0yl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1603138414]
+mesh = SubResource("BoxMesh_5a1so")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=928468551]
+transform = Transform3D(1, 0, 0, 0, 0.88621676, 0.4632708, 0, -0.4632708, 0.88621676, 0, 2.089157, 2)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=437660191]
+transform = Transform3D(0.33041492, 0.5877136, 0.7385247, 0.046620354, -0.79167914, 0.6091557, 0.94268364, -0.16684389, -0.28898203, 1.4523666, 2.8712413, -0.43567944)
+sky_mode = 1

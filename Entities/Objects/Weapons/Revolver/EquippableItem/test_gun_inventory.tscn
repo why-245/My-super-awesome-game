@@ -19,6 +19,9 @@ size = Vector3(1, 0.7471924, 0.33911133)
 [node name="TestGun" type="StaticBody3D" unique_id=1328323266]
 collision_layer = 0
 script = ExtResource("1_0qbyt")
+max_ammo = 6
+bullet_count = 1
+shoot_cooldown = 0.2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=859962570]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11113489, 0.0066474974, 0)
@@ -34,3 +37,10 @@ shape = SubResource("BoxShape3D_5a1so")
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=1177018737]
 transform = Transform3D(1.8358782e-07, 0, -0.99999994, 0, 0.9999999, 0, 1.3999997, 0, 1.3113416e-07, 0.6079988, 0.108031586, -0.86596465)
+
+[node name="ReloadTimer" type="Timer" parent="." unique_id=35767071]
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=1839009891]
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

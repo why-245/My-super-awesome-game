@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dncj2m1k0qelj"]
 
 [ext_resource type="Script" uid="uid://w3xfcma58lia" path="res://Systems/Interaction/interaction_component.gd" id="1_04ofg"]
-[ext_resource type="Script" uid="uid://dcpll0arxrv05" path="res://Entities/Objects/Interactables/test_interact.gd" id="1_6xup1"]
+[ext_resource type="Script" uid="uid://dcpll0arxrv05" path="res://Entities/Interactables/test_interact.gd" id="1_6xup1"]
 [ext_resource type="Shader" uid="uid://b4l4hv74cw7he" path="res://Common/object_shader.gdshader" id="2_km5h5"]
 [ext_resource type="PackedScene" uid="uid://bagi4twhdpqxb" path="res://Entities/Objects/label_3d.tscn" id="2_pb133"]
 [ext_resource type="PackedScene" uid="uid://c7u4wfjmtjda8" path="res://Systems/Dialogue/dialogue_trigger.tscn" id="5_km5h5"]

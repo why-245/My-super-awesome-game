@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bib1vc0pfo3y1"]
+
+[ext_resource type="Script" uid="uid://imsumaoyo7y4" path="res://Entities/Interactables/PuzzleObject/TestPuzzleObject/test_puzzle_object.gd" id="1_3pmbu"]
+[ext_resource type="PackedScene" uid="uid://bagi4twhdpqxb" path="res://Entities/Objects/label_3d.tscn" id="2_naoss"]
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_5a1so"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jp0yl"]
+size = Vector3(1, 2.35437, 1)
+
+[node name="TestPuzzleObject" type="StaticBody3D" unique_id=932448275 groups=["PuzzleObject"]]
+script = ExtResource("1_3pmbu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1113025920]
+mesh = SubResource("TubeTrailMesh_5a1so")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1263506061]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.67718506, 0)
+shape = SubResource("BoxShape3D_jp0yl")
+
+[node name="Label3D" parent="." unique_id=1975442167 instance=ExtResource("2_naoss")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2007475, 0)

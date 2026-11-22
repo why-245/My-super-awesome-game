@@ -8,7 +8,8 @@
 [ext_resource type="Script" uid="uid://bq5oou3a1atok" path="res://Systems/Inventory/item_data.gd" id="5_kn06e"]
 [ext_resource type="PackedScene" uid="uid://bp3scjjaou7ky" path="res://Entities/Objects/Weapons/Revolver/InventoryItem/test_gun.tscn" id="5_p70al"]
 [ext_resource type="Script" uid="uid://bwogat4tpt8fd" path="res://Systems/Inventory/slot_data.gd" id="6_7yo87"]
-[ext_resource type="PackedScene" uid="uid://dncj2m1k0qelj" path="res://Entities/Objects/Interactables/test_interact.tscn" id="6_45d1s"]
+[ext_resource type="PackedScene" uid="uid://dncj2m1k0qelj" path="res://Entities/Interactables/test_interact.tscn" id="6_45d1s"]
+[ext_resource type="PackedScene" uid="uid://bib1vc0pfo3y1" path="res://Entities/Interactables/PuzzleObject/TestPuzzleObject/test_puzzle_object.tscn" id="10_kn06e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o3h3i"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -88,3 +89,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8661013, 1, -4.308812)
 
 [node name="StaticBody3D" parent="." unique_id=1356959874 instance=ExtResource("3_5a7ea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.229293, 0, 2.3514247)
+
+[node name="TestPuzzleObject" parent="." unique_id=932448275 instance=ExtResource("10_kn06e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3263497, 0.5, 6.2060556)
+
+[node name="Label3D" type="Label3D" parent="." unique_id=311980948]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -3.4476821, 1.6004755, 0)
+render_priority = 1
+outline_render_priority = 0
+text = "Shooting range"
+font_size = 41
+outline_size = 18

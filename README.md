@@ -23,9 +23,9 @@ v.0.2.0
 -Removed the intractable object from the world level due to the rework
 
 v.0.3.0
--More Inventory work which is unfinished
+-(UNFINISHED) Work on the inventory to make it resourced based
 -Added 2 shaders one for objects and another for the camera
--Started work on a combat system with a auto aim / target lock function which is unfinished.
+-(UNFINISHED)Started work on a combat system with a auto aim / target lock function.
 -Player turns towards the direction they are moving and only looks at the mouse when you are aiming.
 
 v.0.4.0
@@ -35,6 +35,8 @@ v.0.4.0
 -A "USE" function has been added for certain items (that consumes a item upon use from the inventory)
 -Reload function and ammo system for the place holder gun
 -(UNFINISHED) work on a target lock / auto aim feature 
+
+v.0.4.0
 
 Only compatible with Windows!!!
 

@@ -28,6 +28,14 @@ v.0.3.0
 -Started work on a combat system with a auto aim / target lock function which is unfinished.
 -Player turns towards the direction they are moving and only looks at the mouse when you are aiming.
 
+v.0.4.0
+-Bug fix, The game no longer crashes when you interact with non inventory objects, Inventory is now correctly centered
+-Inventory rework, the inventory is now separated in to two elements, a resource element that handles all the logic and a ui element.
+-A "EQUIP" function has been added for certain items (that actually equips a item)
+-A "USE" function has been added for certain items (that consumes a item upon use from the inventory)
+-Reload function and ammo system for the place holder gun
+-(UNFINISHED) work on a target lock / auto aim feature 
+
 Only compatible with Windows!!!
 
 How to download 
@@ -49,15 +57,19 @@ WASD: movement
 
 SHIFT: Sprint
 
-Shoot: LMB
+LMB: Shoot
 
 "F": Interact
 
-"I": Inventory
+"R" : Reload (must have gun equipped)
 
-"A D": Navigate Inventory menu
+	"I": Inventory
 
-Double left click: Equip (On inventory slot)
+		"A D" "Left arrow key, Right arrow key": Navigate Inventory menu
+
+		"RMB" : On inventory slot to access options for inventory items
+
+			"RMB" : On the different options for the inventory items (Equip, Use are the only functional options)
 
 
 

@@ -5,12 +5,17 @@ class_name InteractionComponent
 
 signal interacted()
 
-func interacted_with(inventory_data : InventoryData):
+var current_index
+
+func inventory_check(inventory_data : InventoryData) -> bool:
 	var index = 0
 	for slot : SlotData in inventory_data.slot_datas:
 		if slot and slot.item_data.item_name == key:
-			interacted.emit()
-			inventory_data.use_slot_data(index, 1)
-			return
+			current_index = index
+			return true
 		index += 1
-	print("i need a ", key, " for this!!!")
+	return false
+
+func interact(inventory_data : InventoryData):
+	interacted.emit()
+	inventory_data.use_slot_data(current_index, 1)

@@ -51,7 +51,6 @@ metadata/_custom_type_script = "uid://bq5oou3a1atok"
 [sub_resource type="Resource" id="Resource_kwl8l"]
 script = ExtResource("6_7yo87")
 item_data = SubResource("Resource_8l3nt")
-quantity = 7
 metadata/_custom_type_script = "uid://bwogat4tpt8fd"
 
 [node name="World" type="Node3D" unique_id=1918096829]
@@ -74,18 +73,18 @@ shape = SubResource("WorldBoundaryShape3D_ex4vr")
 [node name="TestEnemy" parent="." unique_id=1226870746 instance=ExtResource("4_gjpho")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1833363, 1, 6.2491446)
 
-[node name="StaticBody3D" parent="." unique_id=62076919 instance=ExtResource("3_5a7ea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4632645, 0, 0)
-
-[node name="StaticBody3D2" parent="." unique_id=1206488481 instance=ExtResource("3_5a7ea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6606736, 0, -2.7542024)
+[node name="StaticBody3D3" parent="." unique_id=62076919 instance=ExtResource("3_5a7ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7074065, 0, -4.575224)
 slot_data = SubResource("Resource_kwl8l")
 
 [node name="Area3D" parent="." unique_id=2121566427 instance=ExtResource("5_p70al")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8728287, 0.5, -2.5579705)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4169607, 0.5, 0.7432959)
 
 [node name="Player" parent="." unique_id=779760721 instance=ExtResource("1_5a7ea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.46323657)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.095735, 0, -0.46323657)
 
 [node name="TestInteract" parent="." unique_id=156282646 instance=ExtResource("6_45d1s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8661013, 1, -4.308812)
+
+[node name="StaticBody3D" parent="." unique_id=1356959874 instance=ExtResource("3_5a7ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.229293, 0, 2.3514247)

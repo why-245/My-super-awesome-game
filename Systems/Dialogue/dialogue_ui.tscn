@@ -39,6 +39,7 @@ _data = {
 }
 
 [node name="DialogueUi" type="Control" unique_id=1072629136]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,6 +49,7 @@ grow_vertical = 2
 script = ExtResource("1_i5s3c")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=737664021]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1702659164]
 anchors_preset = 12
@@ -110,6 +112,41 @@ grow_vertical = 2
 texture = ExtResource("1_eavhk")
 expand_mode = 1
 
+[node name="YButton" type="Button" parent="CanvasLayer" unique_id=988537844]
+process_mode = 3
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -275.0
+offset_top = -180.0
+offset_right = -75.0
+offset_bottom = -105.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "YES"
+
+[node name="NButton" type="Button" parent="CanvasLayer" unique_id=2114155205]
+process_mode = 3
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -275.0
+offset_top = -95.0
+offset_right = -75.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "NO"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=795076240]
 libraries/ = SubResource("AnimationLibrary_87p6m")
-speed_scale = 0.15
+
+[connection signal="pressed" from="CanvasLayer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/YButton" to="." method="_on_y_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/NButton" to="." method="_on_n_button_pressed"]

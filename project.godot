@@ -31,6 +31,8 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 InventoryItems=""
 AimTargets=""
 Interactables=""
+DialogueCharecters=""
+DialogueObject=""
 
 [input]
 

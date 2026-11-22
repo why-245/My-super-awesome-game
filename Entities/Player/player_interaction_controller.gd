@@ -21,8 +21,9 @@ func  _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("interact"):
 			if object.is_in_group("InventoryItems") == true and object.slot_data:
 				player.get_node("PickUpPrompt").on_item_pick_up(object.slot_data, object)
+				
 			if object.is_in_group("Interactables") and object.has_node("InteractionComponent"):
-				object.get_node("InteractionComponent").interacted_with(player.inventory_data)
+				player.get_node("DialogueUi").start_dialogue(object.get_node("DialogueTrigger"), object)
 			return
 			
 	else:

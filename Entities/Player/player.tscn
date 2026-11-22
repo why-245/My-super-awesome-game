@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://clao4ce7hxqln" path="res://Entities/Player/aim_ray.gd" id="7_7a1se"]
 [ext_resource type="Texture2D" uid="uid://mrbl5v4nsw2g" path="res://icon.svg" id="8_7a1se"]
 [ext_resource type="PackedScene" uid="uid://ddsxgevojs1ro" path="res://Systems/Interaction/pick_up_prompt.tscn" id="9_lub02"]
+[ext_resource type="PackedScene" uid="uid://b1njxk5vj4hsq" path="res://Systems/Dialogue/dialogue_ui.tscn" id="10_x1y6q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5a1so"]
 render_priority = -1
@@ -98,5 +99,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7752155, 0, -0.15180354)
 visible = false
 
 [node name="PickUpPrompt" parent="." unique_id=481478896 instance=ExtResource("9_lub02")]
+
+[node name="DialogueUi" parent="." unique_id=1072629136 instance=ExtResource("10_x1y6q")]
 
 [editable path="InventoryUi"]

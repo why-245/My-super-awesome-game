@@ -15,6 +15,11 @@ run/main_scene="uid://dclom21b6c1yb"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*uid://c6llbq3axofb5"
+PlayerData="*uid://paw0fay8glsn"
+
 [display]
 
 window/size/viewport_width=1280

@@ -39,8 +39,10 @@ shape = SubResource("BoxShape3D_5a1so")
 transform = Transform3D(1.8358782e-07, 0, -0.99999994, 0, 0.9999999, 0, 1.3999997, 0, 1.3113416e-07, 0.6079988, 0.108031586, -0.86596465)
 
 [node name="ReloadTimer" type="Timer" parent="." unique_id=35767071]
+one_shot = true
 
 [node name="FireRateTimer" type="Timer" parent="." unique_id=1839009891]
+one_shot = true
 
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

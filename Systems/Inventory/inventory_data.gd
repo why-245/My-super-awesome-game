@@ -10,7 +10,6 @@ func on_slot_clicked(index : int) -> void:
 
 func use_slot_data(slot_id : int, amount : int) -> void:
 	var slot_data : SlotData = slot_datas[slot_id]
-	print(slot_data)
 	slot_data.quantity -= amount
 	if slot_data.quantity <= 0:
 		slot_datas[slot_id] = null

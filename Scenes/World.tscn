@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://hsqivn0j0hvp" path="res://Entities/Player/player.tscn" id="1_5a7ea"]
 [ext_resource type="Texture2D" uid="uid://mrbl5v4nsw2g" path="res://icon.svg" id="1_5ukr8"]
+[ext_resource type="Script" uid="uid://drc8lka0wplo5" path="res://Scenes/world.gd" id="1_7yo87"]
 [ext_resource type="PackedScene" uid="uid://b3uyeslqdc5pc" path="res://Entities/Objects/InventoryItems/test_object3D.tscn" id="3_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://bo687mdoqyi4" path="res://Entities/Enemies/test_enemy.tscn" id="4_gjpho"]
 [ext_resource type="Script" uid="uid://dnjoorfqaw8cf" path="res://Systems/Inventory/Actions/test_action.gd" id="4_uo7di"]
@@ -55,6 +56,7 @@ item_data = SubResource("Resource_8l3nt")
 metadata/_custom_type_script = "uid://bwogat4tpt8fd"
 
 [node name="World" type="Node3D" unique_id=1918096829]
+script = ExtResource("1_7yo87")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=738782384]
 environment = SubResource("Environment_j0p05")

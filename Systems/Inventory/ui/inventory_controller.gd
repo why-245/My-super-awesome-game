@@ -68,6 +68,8 @@ func on_item_equip(item : Node3D) -> void:
 		item_equipped = true
 		equipped_item = item
 	else:
+		if item.has_method("store_data"):
+			item.store_data()
 		hand.get_child(0).free()
 		item_equipped = false
 
@@ -75,7 +77,6 @@ func equipp_slot_data(index : int) -> void:
 	var slot_data : SlotData = slot_datas[index]
 	if slot_data == null:
 		return
-	
 	var instance = slot_data.item_data.item_prefab.instantiate() as Node3D
 	on_item_equip(instance)
 
